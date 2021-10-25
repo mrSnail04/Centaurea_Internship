@@ -2,12 +2,25 @@ from django.db import models
 
 
 class Event(models.Model):
+    TYPE_CLASSIC = 'ClassicalConcert'
+    TYPE_PARTY = 'Party'
+    TYPE_OPENAIR = 'OpenAir'
+    TYPE_OTHER = 'Other'
+
+    TYPE_CHOICES = (
+        (TYPE_CLASSIC, 'Классический концерт'),
+        (TYPE_PARTY, 'Вечеринка'),
+        (TYPE_OPENAIR, 'ОпэнЭйр'),
+        (TYPE_OTHER, 'Другой'),
+    )
 
     name = models.CharField(max_length=100, verbose_name='Название мероприятия')
     date = models.DateField(verbose_name='Дата мероприятия')
     slug = models.SlugField()
     qty_ticket = models.IntegerField(verbose_name='Количество билетов')
     address = models.CharField(max_length=1024, verbose_name='Адрес')
+    type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
+                                  choices=TYPE_CHOICES, default=TYPE_OTHER)
 
     def __str__(self):
         return self.name
