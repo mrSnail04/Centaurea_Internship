@@ -21,6 +21,8 @@ class Event(models.Model):
     address = models.CharField(max_length=1024, verbose_name='Адрес')
     type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
                                   choices=TYPE_CHOICES, default=TYPE_OTHER)
+    image = models.ImageField(verbose_name='Изображение')
+    created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавление мероприятия')
 
     def __str__(self):
         return self.name
@@ -31,6 +33,7 @@ class Event(models.Model):
 
 
 class ClassicalConcert(Event, models.Model):
+
     voice_type = models.CharField(max_length=100, verbose_name='Тип голоса')
     name_concert = models.CharField(max_length=100, verbose_name='Название концерта')
     composer = models.CharField(max_length=100, verbose_name='Композитор')
@@ -44,7 +47,8 @@ class ClassicalConcert(Event, models.Model):
 
 
 class Party(Event, models.Model):
-    age_limit = models.IntegerField(verbose_name='Возростной ценз')
+
+    age_limit = models.IntegerField(verbose_name='Возрастной ценз')
 
     def __str__(self):
         return self.name
@@ -55,6 +59,7 @@ class Party(Event, models.Model):
 
 
 class OpenAir(Event, models.Model):
+
     route = models.CharField(max_length=1000, verbose_name='Маршрут')
     headliner = models.CharField(max_length=100, verbose_name='Хэдлайнер')
 

@@ -16,22 +16,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Главная</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Главная</a>
         </li>
           {% if not request.user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Авторизация</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'registration' %}">Регистрация</a>
-            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Авторизация</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'registration' %}">Регистрация</a>
+              </li>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="#">Корзина</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
-            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Корзина</a>
+              </li>
+              <li class="nav-link">
+                <p>{{ request.user.username }}</p>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+              </li>
           {% endif %}
       </ul>
       <form class="d-flex">
@@ -49,10 +52,10 @@
         <div class="col-lg-9">
             {% block content %}
             <div class="row">
-                {% for event in events %}
-                    <h1>{{ event }}</h1>
-                    <h1>{{ event.type_event }}</h1>
+                {% for value in result %}
+                    <h1>{{ value }}</h1>
                 {% endfor %}
+
             </div>
             {% endblock content %}
         </div>
