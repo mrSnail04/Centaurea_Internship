@@ -61,3 +61,7 @@ class BaseView(views.View):
             'result': result_list
         }
         return render(request, 'base.html', context)
+
+
+def index(request):
+    return render(request, 'index.html', {})

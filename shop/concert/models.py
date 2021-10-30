@@ -17,11 +17,11 @@ class Event(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название мероприятия')
     date = models.DateField(verbose_name='Дата мероприятия')
     slug = models.SlugField()
-    qty_ticket = models.IntegerField(verbose_name='Количество билетов')
+    qty_ticket = models.PositiveIntegerField(verbose_name='Количество билетов')
     address = models.CharField(max_length=1024, verbose_name='Адрес')
     type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
                                   choices=TYPE_CHOICES, default=TYPE_OTHER)
-    image = models.ImageField(verbose_name='Изображение')
+    image = models.ImageField(verbose_name='Изображение', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавление мероприятия')
 
     def __str__(self):
@@ -48,7 +48,7 @@ class ClassicalConcert(Event, models.Model):
 
 class Party(Event, models.Model):
 
-    age_limit = models.IntegerField(verbose_name='Возрастной ценз')
+    age_limit = models.CharField(max_length=100, verbose_name='Возрастной ценз')
 
     def __str__(self):
         return self.name

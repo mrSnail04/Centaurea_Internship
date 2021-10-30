@@ -7,7 +7,6 @@ from customer.models import Customer
 
 
 class LoginView(views.View):
-
     def get(self, request, *args, **kwargs):
         form = LoginForm(request.POST or None)
         context = {
