@@ -1,8 +1,7 @@
 from rest_framework.decorators import action
 from rest_framework import response, status, viewsets
-
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 from .serializers import CartSerializer
 from customer.models import Cart, Product, CartProduct, Customer
 
@@ -11,12 +10,11 @@ class CartViewSet(viewsets.ModelViewSet):
 
     serializer_class = CartSerializer
     queryset = Cart.objects.all()
+    permission_classes = [IsAuthenticated]
 
     @staticmethod
     def get_cart(user):
-        if user.is_authenticated:
-            return Cart.objects.filter(owner=user.customer, for_anonymous_user=False).first()
-        return Cart.objects.filter(for_anonymous_user=True).first()
+        return Cart.objects.filter(owner=user.customer).first()
 
     @staticmethod
     def _get_or_create_cart_product(customer: Customer, cart: Cart, product: Product):

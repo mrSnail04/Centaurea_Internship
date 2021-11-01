@@ -99,7 +99,6 @@ class Cart (models.Model):
     total_product = models.PositiveIntegerField(verbose_name='Общие кол-во товара', default=0)
     final_price = models.DecimalField(verbose_name='Общая цена', max_digits=9, decimal_places=2, null=True, blank=True)
     in_order = models.BooleanField(default=False)
-    for_anonymous_user = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id)

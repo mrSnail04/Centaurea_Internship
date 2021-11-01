@@ -15,6 +15,7 @@ class Event(models.Model):
     )
 
     name = models.CharField(max_length=100, verbose_name='Название мероприятия')
+    actor = models.CharField(max_length=255, verbose_name='исполнитель/группа', default='no')
     date = models.DateField(verbose_name='Дата мероприятия')
     slug = models.SlugField()
     qty_ticket = models.PositiveIntegerField(verbose_name='Количество билетов')
