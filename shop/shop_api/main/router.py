@@ -1,7 +1,6 @@
 from rest_framework import routers
-
 from ..cart.view import CartViewSet
-from ..main.view import EventViewSet, PartyViewSet,OpenAirViewSet,ClassicalConcertViewSet
+from ..main.view import EventViewSet, PartyViewSet, OpenAirViewSet, ClassicalConcertViewSet
 
 
 router = routers.SimpleRouter()
