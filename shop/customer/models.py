@@ -21,21 +21,6 @@ class Product(models.Model):
         verbose_name_plural = 'Продукты'
 
 
-class Customer(models.Model):
-    # Покупатель
-
-    user = models.OneToOneField(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    is_active = models.BooleanField(default=True, verbose_name='Активный')
-    phone = models.CharField(max_length=20, verbose_name='Номер телефона')
-
-    def __str__(self):
-        return f'{self.user.username}'
-
-    class Meta:
-        verbose_name = 'Покупатель'
-        verbose_name_plural = 'Покупатели'
-
-
 class Order(models.Model):
     # Заказ
 
@@ -53,7 +38,7 @@ class Order(models.Model):
         (STATUS_COMPLETED, 'Заказ  получен')
     )
 
-    customer = models.ForeignKey('Customer', verbose_name='Покупатель', related_name='orders', on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, verbose_name='Покупатель', related_name='orders', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, verbose_name='Имя')
     last_name = models.CharField(max_length=255, verbose_name='Фамилия')
     cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE)
@@ -71,7 +56,7 @@ class Order(models.Model):
 class CartProduct(models.Model):
     # Продук корзины
 
-    user = models.ForeignKey(Customer, verbose_name='Покупатель', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='Покупатель', on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1, verbose_name='Количество товара')
     product = models.ForeignKey(Product, verbose_name='Билет', on_delete=models.CASCADE)
@@ -92,7 +77,7 @@ class CartProduct(models.Model):
 class Cart (models.Model):
     # Корзина
 
-    owner = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, verbose_name='Покупатель', on_delete=models.CASCADE)
     products = models.ManyToManyField(
         CartProduct, blank=True, verbose_name='Продукты для корзины', related_name='related_cart'
     )

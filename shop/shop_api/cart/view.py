@@ -3,7 +3,8 @@ from rest_framework import response, status, viewsets
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from .serializers import CartSerializer
-from customer.models import Cart, Product, CartProduct, Customer
+from customer.models import Cart, Product, CartProduct
+from django.contrib.auth.models import User
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -14,10 +15,18 @@ class CartViewSet(viewsets.ModelViewSet):
 
     @staticmethod
     def get_cart(user):
-        return Cart.objects.filter(owner=user.customer).first()
+        print('878456454a5sd46a45d4')
+        return Cart.objects.filter(owner=user).filter(in_order=False).first()
 
     @staticmethod
-    def _get_or_create_cart_product(customer: Customer, cart: Cart, product: Product):
+    def add_cart(user: User):
+        cart, created = Cart.objects.filter(owner=user).filter(in_order=False).get_or_create(
+            owner=user
+        )
+        return cart, created
+
+    @staticmethod
+    def _get_or_create_cart_product(customer: User, cart: Cart, product: Product):
         cart_product, created = CartProduct.objects.get_or_create(
             user=customer,
             product=product,
@@ -27,15 +36,18 @@ class CartViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=False)
     def current_customer_cart(self, *args, **kwargs):
+        if self.get_cart(self.request.user) is None:
+            CartViewSet.add_cart(self.request.user)
         cart = self.get_cart(self.request.user)
         cart_serializer = CartSerializer(cart)
+        cart.save()
         return response.Response(cart_serializer.data)
 
     @action(methods=['put'], detail=False, url_path='current_customer_cart/add_to_cart/(?P<product_id>\d+)')
     def product_add_to_cart(self, *args, **kwargs):
         cart = self.get_cart(self.request.user)
         product = get_object_or_404(Product, id=kwargs['product_id'])
-        cart_product, created = self._get_or_create_cart_product(self.request.user.customer, cart, product)
+        cart_product, created = self._get_or_create_cart_product(self.request.user, cart, product)
         if created:
             cart.products.add(cart_product)
             cart.save()

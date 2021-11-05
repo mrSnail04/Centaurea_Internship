@@ -72,8 +72,6 @@ class ClassicalConcertSerializer(serializers.ModelSerializer):
 class OpenAirSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
-        print('is valid')
-        print(validated_data)
         return OpenAir.objects.create(**validated_data)
 
     def update(self, instance, validated_data):

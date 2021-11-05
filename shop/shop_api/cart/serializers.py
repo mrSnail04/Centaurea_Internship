@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from customer.models import Cart, CartProduct, Customer, Product
+from customer.models import Cart, CartProduct, Product
 from ..main.serializers import EventSerializer
+from registration.models import User
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -26,14 +27,14 @@ class CustomerSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
 
     class Meta:
-        model = Customer
+        model = User
         fields = '__all__'
 
     @staticmethod
     def get_user(obj):
-        first_name, last_name = obj.user.first_name, obj.user.last_name
+        first_name, last_name = obj.first_name, obj.last_name
         if not (first_name and last_name):
-            return obj.user.username
+            return obj.username
         return ' '.join([first_name, last_name])
 
 

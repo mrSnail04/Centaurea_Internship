@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import BaseView, index
+from .views import index
 
 urlpatterns = [
-    path('', BaseView.as_view(), name='base'),
     path('react/', index),
 ]

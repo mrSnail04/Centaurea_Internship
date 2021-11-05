@@ -38,11 +38,24 @@ class EventViewSet(viewsets.ModelViewSet):
     def update_event(self, request, *args, **kwargs):
         old_event = get_object_or_404(Event, id=kwargs['event_id'])
         data_update = request.data.get('event')
-        serializer = EventSerializer(instance=old_event, data=data_update, partial=True)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return response.Response(serializer.data, status=status.HTTP_201_CREATED)
-        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if data_update.get('type_event') == 'OpenAir':
+            old_event.delete()
+            OpenAirViewSet.add_event(self, request)
+            return response.Response(status=status.HTTP_201_CREATED)
+        elif data_update.get('type_event') == 'ClassicalConcert':
+            old_event.delete()
+            ClassicalConcertViewSet.add_event(self, request)
+            return response.Response(status=status.HTTP_201_CREATED)
+        elif data_update.get('type_event') == 'Party':
+            old_event.delete()
+            PartyViewSet.add_event(self, request)
+            return response.Response(status=status.HTTP_201_CREATED)
+        else:
+            serializer = EventSerializer(instance=old_event, data=data_update, partial=True)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return response.Response(serializer.data, status=status.HTTP_201_CREATED)
+            return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PartyViewSet(viewsets.ModelViewSet):
