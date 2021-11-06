@@ -3,4 +3,5 @@ from .views import index
 
 urlpatterns = [
     path('react/', index),
+    path('react/login/', index)
 ]
