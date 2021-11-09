@@ -6,42 +6,64 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom
 import {Layout} from "./hocs/Layout";
 import {Home} from "./containers/Home";
 import {Login} from "./containers/Login";
-import {Signup} from "./containers/SignUp";
 import {ResetPassword} from './containers/ResetPassword'
-import {API} from "./api/api";
-import {Navbar} from "./components/Navigation/Navbar";
+import {API, setCallbackFor401} from "./api/api";
+import {Logout} from "./containers/Logout";
+import {Registration} from "./containers/Registration";
 
 
-const baseUrl = "/react";
-const home = baseUrl + "/";
-const login = baseUrl + "/login";
+const home = "/";
+const login = "/login";
+const logout = "/logout";
+const registration = "/registration";
+const reset_password = "/reset-password";
+
 
 export const App = () => {
 
-    const [userName, setUser] = useState("");
+    const [user, setUser] = useState(null);
+
+    const getUser = async () => {
+        let user = await API.me();
+        if (user?.id) {
+            setUser(user)
+        }
+    }
+
 
     useEffect(async () => {
-        let user = await API.me(); // {name: ""}
-        if (user?.name) {
-            setUser(user.name)
+        if (localStorage.getItem("auth_token")) {
+            getUser();
         }
     }, []);
 
+    const notauthorized = () => {
+        setUser(null);
+    }
+    setCallbackFor401(notauthorized);
 
     return (
         <Router>
-            <Layout userName={userName}>
+            <Layout user={user} notauthorized={notauthorized}>
                 <Switch>
-                    <Route exact path={home} component={Home}/>
-                    <Route exact path={login}>
-                        {userName ? <Redirect to={home}/> : () => <Login/>}
-                    </Route>
-                    {/*<Route exact path='/react/login' component={() => <Login userName={userName}/>}/>*/}
-                    <Route exact path='/signup' component={Signup}/>
-                    <Route exact path='/reset_password' component={ResetPassword}/>
+                    <Route exact path={home}
+                           component={Home}/>
+                    <Route exact path={login}
+                           component={user?.id ? () => <Redirect to={home}/> : () => <Login getUser={getUser} />}/>
+                    <Route exact path={logout}
+                           component={!user?.id ? () => <Redirect to={login}/> : Logout}/>
+                    <Route exact path={registration}
+                           component={user?.id ? () => <Redirect to={home}/> : () => <Registration getUser={getUser} />}/>
+                    <Route exact path={reset_password}
+                           component={!user?.id ? () => <Redirect to={login}/> : () => <ResetPassword/>}/>
+                    <Route path={"*"} component={NotFound}/>
                 </Switch>
             </Layout>
         </Router>
     );
 }
 
+
+const NotFound = () => {
+    return <div>404</div>
+}

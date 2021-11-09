@@ -1,25 +1,27 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
+import {API} from "../../api/api";
 
 export const Navbar = (props) => {
-
+    console.log(props.user)
+    // props.notauthorized
     return (
         <div className='App'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Ticket Shop</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                    </button>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link style={{textDecoration: 'none'}} to={'/'}>
+                                <span className="nav-link">
+                                    TicketShop
+                                </span>
+                            </Link>
+                        </li>
+                    </ul>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Главная</a>
-                            </li>
-                            {!props.userName ? <AuthLink/> : <UserName userName={props.userName}/>}
+                            {!props.user ? <AuthLink/> : <Logout username={props.user}/>}
                         </ul>
                     </div>
                 </div>
@@ -28,16 +30,40 @@ export const Navbar = (props) => {
     );
 }
 
+const submit = async () => {
+    let result = await API.logout();
+    return console.log(result);
+}
+
 const AuthLink = () => (<>
     <li className="nav-item">
-        <Link to={'/react/login'}>Авторизация</Link>
-        {/*<a className="nav-link" href="#">Авторизация</a>*/}
+        <Link style={{textDecoration: 'none'}} to={'/login'}>
+            <span className="nav-link">
+                Авторизация
+            </span>
+        </Link>
     </li>
     <li className="nav-item">
-        <a className="nav-link" href="#">Регистрация</a>
+        <Link style={{textDecoration: 'none'}} to={'/registration'}>
+            <span className="nav-link">
+                Регистрация
+            </span>
+        </Link>
     </li>
 </>)
 
-const UserName = (props) => (
-    <div>{props.userName}</div>
-)
+const Logout = (props) => (<>
+    <li className="nav-item">
+        <Link style={{textDecoration: 'none'}} to={'#'}>
+            <span className="nav-link">
+                {props.username}
+            </span>
+        </Link>
+    </li>
+
+    <li className="nav-item">
+        <button type="button" class="btn btn-light" onClick={submit}>Выход</button>
+    </li>
+</>)
+
+

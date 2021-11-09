@@ -2,6 +2,8 @@ from django.urls import path
 from .views import index
 
 urlpatterns = [
-    path('react/', index),
-    path('react/login/', index)
+    path('', index),
+    path('login/', index),
+    path('registration/', index),
+    path('api/logout', index),
 ]

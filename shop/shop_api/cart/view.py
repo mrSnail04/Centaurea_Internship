@@ -15,7 +15,6 @@ class CartViewSet(viewsets.ModelViewSet):
 
     @staticmethod
     def get_cart(user):
-        print('878456454a5sd46a45d4')
         return Cart.objects.filter(owner=user).filter(in_order=False).first()
 
     @staticmethod
