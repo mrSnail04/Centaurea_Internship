@@ -82,10 +82,20 @@ const me = async () => {
         })
 }
 
+const cartuser = async () => {
+    return i.get('/api/cart/current_customer_cart').then((response) => {
+        let cart = response.data
+        return cart;
+    })
+        .catch((error) => {
+            console.log(error)
+        })
+}
 
 export const API = {
     login,
     registration,
     logout,
-    me
+    me,
+    cartuser,
 }

@@ -7,6 +7,7 @@ import {Layout} from "./hocs/Layout";
 import {Home} from "./containers/Home";
 import {Login} from "./containers/Login";
 import {ResetPassword} from './containers/ResetPassword'
+import {Profile} from './containers/Profile'
 import {API, setCallbackFor401} from "./api/api";
 import {Logout} from "./containers/Logout";
 import {Registration} from "./containers/Registration";
@@ -17,11 +18,13 @@ const login = "/login";
 const logout = "/logout";
 const registration = "/registration";
 const reset_password = "/reset-password";
+const profile = "/profile";
 
 
 export const App = () => {
 
     const [user, setUser] = useState(null);
+    const [cart, setCart] = useState(null);
 
     const getUser = async () => {
         let user = await API.me();
@@ -30,10 +33,16 @@ export const App = () => {
         }
     }
 
-
+    const getCart = async () => {
+        let cart = await API.cartuser();
+        if (cart?.id) {
+            setCart(cart)
+        }
+    }
     useEffect(async () => {
         if (localStorage.getItem("auth_token")) {
             getUser();
+            getCart();
         }
     }, []);
 
@@ -56,6 +65,8 @@ export const App = () => {
                            component={user?.id ? () => <Redirect to={home}/> : () => <Registration getUser={getUser} />}/>
                     <Route exact path={reset_password}
                            component={!user?.id ? () => <Redirect to={login}/> : () => <ResetPassword/>}/>
+                    <Route exact path={profile}
+                           component={!user?.id ? () => <Redirect to={login}/> : () => <Profile user={user} cart={cart} />}/>
                     <Route path={"*"} component={NotFound}/>
                 </Switch>
             </Layout>

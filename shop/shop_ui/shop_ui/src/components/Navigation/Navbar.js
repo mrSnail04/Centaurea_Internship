@@ -4,8 +4,6 @@ import {Link} from "react-router-dom";
 import {API} from "../../api/api";
 
 export const Navbar = (props) => {
-    console.log(props.user)
-    // props.notauthorized
     return (
         <div className='App'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,7 +19,7 @@ export const Navbar = (props) => {
                     </ul>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {!props.user ? <AuthLink/> : <Logout username={props.user}/>}
+                            {!props.user? <AuthLink/> : <Logout user={props.user}/>}
                         </ul>
                     </div>
                 </div>
@@ -54,9 +52,9 @@ const AuthLink = () => (<>
 
 const Logout = (props) => (<>
     <li className="nav-item">
-        <Link style={{textDecoration: 'none'}} to={'#'}>
+        <Link style={{textDecoration: 'none'}} to={'/profile'}>
             <span className="nav-link">
-                {props.username}
+                {props.user.username}
             </span>
         </Link>
     </li>
