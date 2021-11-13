@@ -82,7 +82,7 @@ const me = async () => {
         })
 }
 
-const cartuser = async () => {
+const cartUser = async () => {
     return i.get('/api/cart/current_customer_cart').then((response) => {
         let cart = response.data
         return cart;
@@ -92,10 +92,48 @@ const cartuser = async () => {
         })
 }
 
+const changeQty = async (count, product) => {
+    return i.patch(`api/cart/current_customer_cart/change_qty/${count}/${product.id}/`
+    ).then((response) => {
+        console.log(response.data) ;
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+const deleteProduct = async (product) => {
+    return i.put(`api/cart/current_customer_cart/remove_from_cart/${product.id}/`
+    ).then((response) => {
+        return response;
+    }).catch((error) => {
+        return error;
+    })
+}
+
+const events = async () => {
+    return i.get('api/event/all_events').then((response) => {
+        return response;
+    }).catch((error) => {
+        console.log(error);
+    })
+}
+
+const event = async (slug) => {
+    return i.get(`api/event/${slug}`).then((response) => {
+        return response;
+    }).catch((error) => {
+        console.log(error);
+    })
+}
+
 export const API = {
     login,
     registration,
     logout,
     me,
-    cartuser,
+    cartUser,
+    changeQty,
+    deleteProduct,
+    events,
+    event,
 }

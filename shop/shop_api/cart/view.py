@@ -33,7 +33,7 @@ class CartViewSet(viewsets.ModelViewSet):
         )
         return cart_product, created
 
-    @action(methods=['get'], detail=False)
+    @action(methods=['GET'], detail=False)
     def current_customer_cart(self, *args, **kwargs):
         if self.get_cart(self.request.user) is None:
             CartViewSet.add_cart(self.request.user)
@@ -42,7 +42,7 @@ class CartViewSet(viewsets.ModelViewSet):
         cart.save()
         return response.Response(cart_serializer.data)
 
-    @action(methods=['put'], detail=False, url_path='current_customer_cart/add_to_cart/(?P<product_id>\d+)')
+    @action(methods=['PUT'], detail=False, url_path='current_customer_cart/add_to_cart/(?P<product_id>\d+)')
     def product_add_to_cart(self, *args, **kwargs):
         cart = self.get_cart(self.request.user)
         product = get_object_or_404(Product, id=kwargs['product_id'])
@@ -53,16 +53,16 @@ class CartViewSet(viewsets.ModelViewSet):
             return response.Response({"detail": 'Товар добавлен в корзину'})
         return response.Response({"detail": 'Товар уже в корзине'}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(methods=['patch'], detail=False,
+    @action(methods=['PATCH'], detail=False,
             url_path='current_customer_cart/change_qty/(?P<qty>\d+)/(?P<cart_product_id>\d+)')
     def product_change_qty(self, *args, **kwargs):
         cart_product = get_object_or_404(CartProduct, id=kwargs['cart_product_id'])
         cart_product.qty = int(kwargs['qty'])
         cart_product.save()
         cart_product.cart.save()
-        return response.Response(status=status.HTTP_200_OK)
+        return response.Response({"detail": 'Количество товара изменено'}, status=status.HTTP_200_OK)
 
-    @action(methods=['put'], detail=False,
+    @action(methods=['PUT'], detail=False,
             url_path='current_customer_cart/remove_from_cart/(?P<cart_product_id>\d+)')
     def product_remove_from_cart(self, *args, **kwargs):
         cart = self.get_cart(self.request.user)
@@ -70,4 +70,4 @@ class CartViewSet(viewsets.ModelViewSet):
         cart.products.remove(cart_product)
         cart_product.delete()
         cart.save()
-        return response.Response(status=status.HTTP_204_NO_CONTENT)
+        return response.Response({"detail": 'Товар удалён'}, status=status.HTTP_204_NO_CONTENT)

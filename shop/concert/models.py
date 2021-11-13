@@ -15,14 +15,14 @@ class Event(models.Model):
     )
 
     name = models.CharField(max_length=100, verbose_name='Название мероприятия')
-    actor = models.CharField(max_length=255, verbose_name='исполнитель/группа', default='no')
+    actor = models.CharField(max_length=255, verbose_name='исполнитель/группа')
     date = models.DateField(verbose_name='Дата мероприятия')
     slug = models.SlugField()
     qty_ticket = models.PositiveIntegerField(verbose_name='Количество билетов')
     address = models.CharField(max_length=1024, verbose_name='Адрес')
     type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
                                   choices=TYPE_CHOICES, default=TYPE_OTHER)
-    image = models.ImageField(verbose_name='Изображение', null=True, blank=True)
+    image = models.ImageField(upload_to='images', verbose_name='Изображение', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавление мероприятия')
 
     def __str__(self):

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {API} from "../api/api";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export const Profile = (props) => {
@@ -17,13 +19,12 @@ export const Profile = (props) => {
                     <hr/>
                 </div>
             </div>
-            {!props.cart.final_price? <NoProduct/> : <Product user={props.cart}/>}
+            {!props.cart?.products[0] ? <EmptyCart/> : <Cart cart={props.cart} getCart={props.getCart} />}
         </div>
-
     );
 };
 
-const NoProduct = () => (
+const EmptyCart = () => (
     <div className="row">
         <div className="col-md-6 offset-md-3">
             <h3 className="text-center">Корзина пуста</h3>
@@ -31,37 +32,97 @@ const NoProduct = () => (
     </div>
 )
 
-const Product = (props) => (<>
-    <div className="row">
-        <div className="col-md-6 offset-md-3">
-            <h3>Корзина</h3>
-            <div className="col-mb-12">
-                <table className="table">
-                    <thead>
-                    <th scope="col">Номер</th>
-                    <th scope="col">Сумма</th>
-                    <th scope="col">Товар</th>
-                    <th scope="col">Количество</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">{props.user.id}</th>
-                        <td scope="row">{props.user.final_price}</td>
-                        <td scope="row">
-                            <ul>
-                                <li>{props.user.products[0].product.title} </li>
-                            </ul>
-                        </td>
-                        <td scope="row">
-                            <div className="input-group">
-                                <input type="number" className="form-control" min="0" max="10" placeholder="Qty"
-                                       aria-label="Количество"/>
+function round(value) {
+        let precision = Math.pow(10, 2);
+        return Math.round((parseFloat(value) * precision + 0.0000001)) / precision;
+    }
+
+const Cart = (props) => {
+    const [products, setProducts] = useState(props.cart.products);
+
+    const updateCount = (count, id) => {
+        let index = products.findIndex(p => p.id === id);
+        if (index >= 0) {
+            let p = products[index];
+            let newProduct = {...p, qty: count};
+            let newProducts = [...products];
+            newProducts[index] = newProduct;
+            setProducts(newProducts);
+        }
+    }
+
+    let total = round(products.reduce((acc, p) => acc + (p.qty * p.product.price), 0));
+
+    return <>
+        <div className="row">
+            <div className="col-md-6 offset-md-3">
+                <h3>Корзина</h3>
+                <div className="col-mb-12">
+                    <table className="table">
+                        <thead>
+                        <th scope="col" >
+                            <span style={{display: 'flex', justifyContent: 'flex-start'}}>Товар</span>
+                        </th>
+                        <th scope="col" >
+                            <span style={{display: 'flex', justifyContent: 'flex-start'}}>Цена</span>
+                        </th>
+                        <th scope="col" >
+                            <span style={{display: 'flex', justifyContent: 'center'}}>Количество</span>
+                        </th>
+                        </thead>
+                        <tbody>
+                        {products.map(product => <Product key={product.id} count={product.qty} product={product}
+                                                          updateCount={updateCount} getCart={props.getCart}/>)}
+                        </tbody>
+                    </table>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm">
+                                <h5 style={{marginTop: '8px'}}><span >Итого: </span><span>{total}</span></h5>
                             </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                            <div className="col-sm" style={{display: 'flex', justifyContent: 'flex-end'}}>
+                                <button type="button" class="btn btn-outline-success">Купить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</>)
+    </>
+}
+
+const Product = ({product, count, updateCount, getCart}) => {
+
+    const increase = async () => {
+        await API.changeQty(count+1, product);
+        updateCount(count + 1, product.id);
+    }
+    const decrease = async () => {
+        await API.changeQty(count-1, product);
+        updateCount(count - 1, product.id);
+    }
+
+    const del = async () => {
+        let result = await API.deleteProduct(product);
+        if  (result.status == 204) {
+            getCart();
+        } else {
+            console.log('Ошибка')
+        }
+    }
+
+    return <tr key={product.id}>
+        <td scope="row">{product.product.title}</td>
+        <td scope="row">{round(product.product.price * product.qty)}</td>
+        <td scope="row">
+            <span style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <button type="button" class="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                <span style={{margin: '3px'}} class="btn btn-outline-secondary">{count}</span>
+                <button type="button" class="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                <button style={{marginLeft: '3px', marginRight: '12px'}}
+                        type="button" className="btn btn-outline-danger"
+                        onClick={del}>Удалить</button>
+            </span>
+        </td>
+    </tr>
+}

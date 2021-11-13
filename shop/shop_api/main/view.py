@@ -12,8 +12,15 @@ class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
 
     @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])
-    def all_event(self, *args, **kwargs):
-        event_serializer = EventSerializer(Event.objects.all())
+    def all_events(self, *args, **kwargs):
+        event_serializer = EventSerializer(Event.objects.all(), many=True)
+        return response.Response(event_serializer.data)
+
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated],
+            url_path='(?P<slug>.+)')
+    def event(self, *args, **kwargs):
+        event = Event.objects.filter(slug=kwargs["slug"])
+        event_serializer = EventSerializer(event, many=True)
         return response.Response(event_serializer.data)
 
     @action(methods=['post'], detail=False,
