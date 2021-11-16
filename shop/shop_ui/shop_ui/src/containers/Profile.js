@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {API} from "../api/api";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export const Profile = (props) => {
+
     return (
         <div className="container">
             <div className="row">
@@ -94,12 +95,18 @@ const Cart = (props) => {
 const Product = ({product, count, updateCount, getCart}) => {
 
     const increase = async () => {
-        await API.changeQty(count+1, product);
+        let result = await API.changeQty(count+1, product);
         updateCount(count + 1, product.id);
+        if (result.status === 200) {
+            getCart()
+        }
     }
     const decrease = async () => {
-        await API.changeQty(count-1, product);
+        let result = await API.changeQty(count-1, product);
         updateCount(count - 1, product.id);
+        if (result.status === 200) {
+            getCart()
+        }
     }
 
     const del = async () => {

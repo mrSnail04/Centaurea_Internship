@@ -95,7 +95,10 @@ const cartUser = async () => {
 const changeQty = async (count, product) => {
     return i.patch(`api/cart/current_customer_cart/change_qty/${count}/${product.id}/`
     ).then((response) => {
-        console.log(response.data) ;
+        if (response.status === 200) {
+            console.log(response.data) ;
+            return(response);
+        }
     }).catch((error) => {
         console.log(error)
     })
