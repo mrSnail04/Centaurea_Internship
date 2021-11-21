@@ -1,9 +1,8 @@
 import axios from "axios";
-import React from 'react';
 
 
 const i = axios.create({
-    baseURL: "http://127.0.0.1:8000",
+    baseURL: "http://localhost:8000",
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
@@ -17,7 +16,7 @@ export const setCallbackFor401 = (callback) => {
 
 
 i.interceptors.request.use(config => {
-    if (config.url === '/auth/token/login' || config.url === '/auth/users/') {
+    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me/') {
         return config
     }
     config.headers['Authorization'] = localStorage.getItem("auth_token") ? 'Token ' + localStorage.getItem("auth_token") : null;
@@ -46,6 +45,7 @@ const login = async (login, password) => {
             }
         }, (error) => {
             console.log(error)
+            return error
         })
 }
 
@@ -55,12 +55,21 @@ const registration = async (username, password, firstname, lastname, email) => {
         password: password,
         first_name: firstname,
         last_name: lastname,
-        email: email,
-    }).then((response) => {
-        return response
-    }).catch((error) => {
-        console.log(error)
-    })
+        email: email
+    }).then(
+        //resolved
+        async (response) => {
+            let data = await login(username, password);
+            if (data && data.status === 200) {
+                return response
+            } else {
+                console.log("Ошибка аутентификации")
+            }
+        },
+        //rejected
+        (error) => {
+            console.log(error)
+        })
 }
 
 const logout = async () => {
@@ -96,8 +105,7 @@ const changeQty = async (count, product) => {
     return i.patch(`api/cart/current_customer_cart/change_qty/${count}/${product.id}/`
     ).then((response) => {
         if (response.status === 200) {
-            console.log(response.data) ;
-            return(response);
+            return (response);
         }
     }).catch((error) => {
         console.log(error)

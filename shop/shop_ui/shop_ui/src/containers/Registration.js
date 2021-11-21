@@ -42,7 +42,9 @@ export const Registration = (props) => {
 
     const submit = async () => {
         let result = await API.registration(username, password, firstname, lastname, email);
-        if (result.statusText == 'Created') {
+        console.log(result)
+        if (result?.statusText === 'Created') {
+            console.log(result.statusText)
             props.getUser();
         }
     }
@@ -57,7 +59,7 @@ export const Registration = (props) => {
                         <span style={{width:'100px'}} className="input-group-text">User Name</span>
                     </div>
                     <div>
-                        <input class="form-control"
+                        <input className="form-control"
                                type="text" onChange={changeUserName}
                                placeholder={"User Name"} value={username}/>
                     </div>
@@ -67,7 +69,7 @@ export const Registration = (props) => {
                         <span style={{width:'100px'}} className="input-group-text">Password</span>
                     </div>
                     <div>
-                        <input class="form-control"
+                        <input className="form-control"
                                type="password" onChange={changePassword}
                                placeholder={"Password"} value={password}/>
                     </div>
@@ -77,7 +79,7 @@ export const Registration = (props) => {
                         <span style={{width:'100px'}} className="input-group-text">First Name</span>
                     </div>
                     <div>
-                        <input class="form-control"
+                        <input className="form-control"
                                type="text" onChange={changeFirstName}
                                placeholder={"First Name"} value={firstname}/>
                     </div>
@@ -87,7 +89,7 @@ export const Registration = (props) => {
                         <span style={{width:'100px'}} className="input-group-text">Last Name</span>
                     </div>
                     <div>
-                        <input class="form-control"
+                        <input className="form-control"
                                type="text" onChange={changeLastName}
                                placeholder={"Last Name"} value={lastname}/>
                     </div>
@@ -97,12 +99,12 @@ export const Registration = (props) => {
                         <span style={{width:'100px'}} className=" input-group-text">Email</span>
                     </div>
                     <div>
-                        <input class="form-control"
+                        <input className="form-control"
                                type="email" onChange={changeEmail}
                                placeholder={"Email"} value={email}/>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" onClick={submit}>Войти</button>
+                <button type="button" className="btn btn-primary" onClick={submit}>Войти</button>
             </div>
         </div>
     );

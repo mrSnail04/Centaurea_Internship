@@ -7,11 +7,15 @@ export const EventPage = (props) => {
     const [concert, setConcert] = useState(null);
     let {slug} = useParams(); //{slug: 'halloween'}
 
-    useEffect(async () => {
-        setLoading(true);
-        let result = await getEvent(slug)
-        setConcert(result);
-        setLoading(false);
+    useEffect(() => {
+        let currentSlug = slug;
+        async function fetchEvent() {
+            setLoading(true);
+            let result = await getEvent(currentSlug)
+            setConcert(result);
+            setLoading(false);
+        }
+        fetchEvent();
     }, [slug])
 
     if (loading) {
@@ -48,13 +52,13 @@ export const EventPage = (props) => {
 };
 
 const getEvent = async (slug) => {
-        let result = await API.event(slug);
-        if  (result.status == 200) {
-            return result.data[0];
-        } else {
-            console.log('Ошибка')
-        }
+    let result = await API.event(slug);
+    if (result.status === 200) {
+        return result.data[0];
+    } else {
+        console.log('Ошибка')
     }
+}
 const Concert = ({concert}) => {
 
     return (

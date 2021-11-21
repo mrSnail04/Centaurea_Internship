@@ -30,7 +30,7 @@ export const Navbar = (props) => {
 
 const submit = async () => {
     let result = await API.logout();
-    return console.log(result);
+    return result;
 }
 
 const AuthLink = () => (<>
@@ -60,7 +60,7 @@ const Logout = (props) => (<>
     </li>
 
     <li className="nav-item">
-        <button type="button" class="btn btn-light" onClick={submit}>Выход</button>
+        <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
     </li>
 </>)
 

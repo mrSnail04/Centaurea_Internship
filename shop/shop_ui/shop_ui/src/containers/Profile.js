@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {API} from "../api/api";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -82,7 +82,7 @@ const Cart = (props) => {
                                 <h5 style={{marginTop: '8px'}}><span >Итого: </span><span>{total}</span></h5>
                             </div>
                             <div className="col-sm" style={{display: 'flex', justifyContent: 'flex-end'}}>
-                                <button type="button" class="btn btn-outline-success">Купить</button>
+                                <button type="button" className="btn btn-outline-success">Купить</button>
                             </div>
                         </div>
                     </div>
@@ -111,21 +111,23 @@ const Product = ({product, count, updateCount, getCart}) => {
 
     const del = async () => {
         let result = await API.deleteProduct(product);
-        if  (result.status == 204) {
+        if  (result.status === 204) {
             getCart();
         } else {
             console.log('Ошибка')
         }
     }
 
+    //scope="row"
+
     return <tr key={product.id}>
-        <td scope="row">{product.product.title}</td>
-        <td scope="row">{round(product.product.price * product.qty)}</td>
-        <td scope="row">
+        <td>{product.product.title}</td>
+        <td>{round(product.product.price * product.qty)}</td>
+        <td>
             <span style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <button type="button" class="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
-                <span style={{margin: '3px'}} class="btn btn-outline-secondary">{count}</span>
-                <button type="button" class="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
+                <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
                 <button style={{marginLeft: '3px', marginRight: '12px'}}
                         type="button" className="btn btn-outline-danger"
                         onClick={del}>Удалить</button>

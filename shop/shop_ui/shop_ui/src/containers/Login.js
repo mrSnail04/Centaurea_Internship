@@ -38,7 +38,7 @@ export const Login = (props) => {
                         <span style={{width: '100px'}} className="input-group-text">Login</span>
                     </div>
                     <div>
-                        <input type="text" class="form-control" onChange={changeLogin} placeholder={"Login"} value={login}/>
+                        <input type="text" className="form-control" onChange={changeLogin} placeholder={"Login"} value={login}/>
                     </div>
                 </div>
                 <div className="input-group mb-3">
@@ -46,10 +46,10 @@ export const Login = (props) => {
                         <span style={{width: '100px'}} className="input-group-text">Password</span>
                     </div>
                     <div>
-                        <input type="password" class="form-control" onChange={changePassword} placeholder={"Password"} value={password}/>
+                        <input type="password" className="form-control" onChange={changePassword} placeholder={"Password"} value={password}/>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" onClick={submit}>Войти</button>
+                <button type="button" className="btn btn-primary" onClick={submit}>Войти</button>
             </div>
         </div>
     );
