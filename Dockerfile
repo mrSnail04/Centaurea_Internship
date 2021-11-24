@@ -9,7 +9,7 @@ RUN apt-get install -y curl \
 WORKDIR /app/backend
 
 # Install Python dependencies
-COPY ./shop/requirements.txt /app
+COPY ./shop/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
 
 # Install JS dependencies
