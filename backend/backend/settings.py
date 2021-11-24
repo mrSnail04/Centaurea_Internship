@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'corsheaders',
     'whitenoise.runserver_nostatic',
-    'backend',
 ]
 
 
@@ -180,7 +179,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-PRODUCTION_HOST=agile-lowlands-01149.herokuapp.com
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
