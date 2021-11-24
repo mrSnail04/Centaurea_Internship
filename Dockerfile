@@ -15,7 +15,7 @@ RUN pip3 install --upgrade pip -r requirements.txt
 # Install JS dependencies
 WORKDIR /app/frontend
 
-COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
+COPY ./shop_ui/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
