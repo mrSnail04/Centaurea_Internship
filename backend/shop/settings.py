@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-(ygwh-78e-jan!c05qe*5@h#&u#8r+vbaea)ui!#ym9^vm1ji0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["shop", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["backend", "localhost", "127.0.0.1"]
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -104,12 +104,12 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'shop.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', BASE_DIR / 'shop_ui/shop_ui/build'],
+        'DIRS': ['templates', BASE_DIR / 'frontend/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +123,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'shop.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 AUTH_USER_MODEL = "registration.User"
 # Database
@@ -186,12 +186,12 @@ PRODUCTION_HOST=agile-lowlands-01149.herokuapp.com
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(
-    BASE_DIR / '../', 'shop_ui', 'build', 'static')]
+    BASE_DIR / '../', 'frontend', 'build', 'static')]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
 
-WHITENOISE_ROOT = os.path.join(BASE_DIR, "../", "shop-ui", "build", "root")
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "../", "frontend", "build", "root")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

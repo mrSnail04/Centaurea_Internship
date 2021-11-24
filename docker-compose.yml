@@ -33,9 +33,9 @@ services:
     image: backend:backend
     container_name: code
 
-    build: ./shop
+    build: ./backend
     volumes:
-      - ./shop:/app/backend
+      - ./backend:/app/backend
     stdin_open: true
     tty: true
 
@@ -52,16 +52,16 @@ services:
     restart : always
     container_name : front
     command : npm start
-    build : ./shop_ui/
+    build : frontend/
     volumes:
-      - ./shop_ui:/app
+      - ./frontend:/app
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports :
       - "3000:3000"
     command: npm start
     depends_on :
-      - shop
+      - backend
     networks:
       - db-net
 

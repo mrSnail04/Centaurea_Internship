@@ -9,13 +9,13 @@ RUN apt-get install -y curl \
 WORKDIR /app/backend
 
 # Install Python dependencies
-COPY ./shop/requirements.txt /app/backend/
+COPY ./backend/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
 
 # Install JS dependencies
 WORKDIR /app/frontend
 
-COPY ./shop_ui/package.json ./shop_ui/yarn.lock /app/frontend/
+COPY  ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
