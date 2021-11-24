@@ -32,12 +32,13 @@ services:
     restart: always
     image: backend:backend
     container_name: code
-    command : bash -c "python manage.py migrate --no-input
-                      && python manage.py initadmin
-                      && python manage.py runserver 0.0.0.0:$PORT"
-    build:
-      context: ./shop/
-      dockerfile: Dockerfile
+
+    build: ./shop
+    volumes:
+      - ./shop:/app/backend
+    stdin_open: true
+    tty: true
+
     links:
       - db:db
     ports:
@@ -51,12 +52,14 @@ services:
     restart : always
     container_name : front
     command : npm start
-    build :
-      context : /shop/shop_ui/shop_ui/
-      dockerfile : Dockerfile
+    build : ./shop_ui/
+    volumes:
+      - ./shop_ui:/app
+      # One-way volume to use node_modules from inside image
+      - /app/node_modules
     ports :
       - "3000:3000"
-    stdin_open : true
+    command: npm start
     depends_on :
       - shop
     networks:

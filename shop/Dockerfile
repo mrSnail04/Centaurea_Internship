@@ -2,14 +2,18 @@ FROM python:3.8
 
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
+WORKDIR /app/backend
+
+COPY requirements.txt /app/backend
 
 RUN pip install --upgrade pip
 RUN pip install gunicorn
-COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY . ./
-
+COPY . /app/backend
+COPY ./scripts/ /app/
+ENV PORT 8000
 EXPOSE 8080
 
+RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
+ENTRYPOINT ["/app/entrypoint-prod.sh"]
