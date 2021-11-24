@@ -11,10 +11,10 @@ WORKDIR /app/backend
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
-
+COPY ./backend/scripts/ /app/backend/
 # Install JS dependencies
 WORKDIR /app/frontend
-COPY ./backend/scripts/ /app/backend/
+
 COPY  ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
