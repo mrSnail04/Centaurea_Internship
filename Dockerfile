@@ -40,6 +40,6 @@ WORKDIR /app/backend
 RUN python3 manage.py collectstatic --noinput
 
 EXPOSE $PORT
-WORKDIR /app/backend
-RUN ["chmod", "+x", "/app/entrypoint.sh"]
-ENTRYPOINT ["/app/entrypoint.sh"]
+
+RUN ["chmod", "+x", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
