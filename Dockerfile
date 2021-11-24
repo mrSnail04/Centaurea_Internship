@@ -14,13 +14,13 @@ RUN pip3 install --upgrade pip -r requirements.txt
 
 # Install JS dependencies
 WORKDIR /app/frontend
-
+COPY ./backend/scripts/ /app/backend/
 COPY  ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
-COPY ./backend/scripts/ /app/backend
+
 # Build static files
 RUN $HOME/.yarn/bin/yarn build
 
