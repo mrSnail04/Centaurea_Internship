@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'corsheaders',
     'whitenoise.runserver_nostatic',
+    'backend',
 ]
 
 
