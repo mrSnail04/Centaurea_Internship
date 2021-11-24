@@ -32,13 +32,13 @@ RUN mkdir root && mv *.ico *.json root
 # Collect static files
 RUN mkdir /app/backend/staticfiles
 
-WORKDIR /app
+WORKDIR /app/backend
 
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
 # Be sure to add a real SECRET_KEY config variable in Heroku.
-RUN python3 backend/manage.py collectstatic --noinput
+RUN python3 manage.py collectstatic --noinput
 
 EXPOSE $PORT
-
+WORKDIR /app
 RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
 ENTRYPOINT ["/app/entrypoint-prod.sh"]
