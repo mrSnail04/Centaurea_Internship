@@ -20,6 +20,7 @@ RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
+COPY ./backend/scripts/ /app/
 # Build static files
 RUN $HOME/.yarn/bin/yarn build
 
