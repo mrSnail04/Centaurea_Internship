@@ -20,7 +20,7 @@ RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
-COPY ./backend/scripts/ /app/
+COPY ./backend/scripts/ /app/backend
 # Build static files
 RUN $HOME/.yarn/bin/yarn build
 
@@ -40,6 +40,6 @@ WORKDIR /app/backend
 RUN python3 manage.py collectstatic --noinput
 
 EXPOSE $PORT
-WORKDIR /app
+WORKDIR /app/backend
 RUN ["chmod", "+x", "/app/entrypoint.sh"]
 ENTRYPOINT ["/app/entrypoint.sh"]
