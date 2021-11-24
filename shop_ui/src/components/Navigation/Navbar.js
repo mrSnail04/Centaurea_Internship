@@ -12,7 +12,7 @@ export const Navbar = (props) => {
                         <li className="nav-item">
                             <Link style={{textDecoration: 'none'}} to={'/'}>
                                 <span className="nav-link">
-                                    TicketShop
+                                    My TicketShop
                                 </span>
                             </Link>
                         </li>
