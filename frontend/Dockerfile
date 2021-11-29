@@ -1,9 +1,9 @@
-FROM node:13.12.0-alpine
+FROM node:12
 WORKDIR /app/
 
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json /app/
 RUN npm install
-RUN npm install react-scripts@3.4.1 -g
+
 COPY . /app/
 EXPOSE 3000
 CMD npm start

@@ -11,7 +11,7 @@ WORKDIR /app/backend
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
-COPY ./backend/entrypoint.sh /app/backend/
+
 # Install JS dependencies
 WORKDIR /app/frontend
 
@@ -20,6 +20,7 @@ RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
+COPY ./backend/scripts/ /app/
 
 # Build static files
 RUN $HOME/.yarn/bin/yarn build
@@ -33,16 +34,15 @@ RUN mkdir root && mv *.ico *.json root
 # Collect static files
 RUN mkdir /app/backend/staticfiles
 
-WORKDIR /app/backend
+WORKDIR /app
 
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
 # Be sure to add a real SECRET_KEY config variable in Heroku.
-RUN python3 manage.py collectstatic --noinput
+RUN DJANGO_SETTINGS_MODULE=backend.settings.prod \
+    SECRET_KEY=TEST_SECRET_KEY \
+    python3 backend/manage.py collectstatic --noinput
 
 EXPOSE $PORT
 
-RUN python manage.py makemigrations --no-input
-RUN python manage.py migrate --no-input
-RUN python manage.py runserver 0.0.0.0:$PORT
-#RUN ["chmod", "+x", "entrypoint.sh"]
-#ENTRYPOINT ["entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
+ENTRYPOINT ["/app/entrypoint-prod.sh"]
