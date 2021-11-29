@@ -43,6 +43,6 @@ EXPOSE $PORT
 
 RUN python manage.py makemigrations --no-input
 RUN python manage.py migrate --no-input
-RUN python backend/manage.py runserver 0.0.0.0:$PORT
+#RUN python manage.py runserver 0.0.0.0:$PORT
 #RUN ["chmod", "+x", "entrypoint.sh"]
 #ENTRYPOINT ["entrypoint.sh"]
