@@ -41,5 +41,8 @@ RUN python3 manage.py collectstatic --noinput
 
 EXPOSE $PORT
 
-RUN ["chmod", "+x", "/entrypoint.sh"]
-ENTRYPOINT ["/entrypoint.sh"]
+RUN python manage.py makemigrations --no-input
+RUN python manage.py migrate --no-input
+RUN python manage.py runserver 0.0.0.0:$PORT
+#RUN ["chmod", "+x", "entrypoint.sh"]
+#ENTRYPOINT ["entrypoint.sh"]
