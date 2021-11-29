@@ -15,5 +15,5 @@ COPY ./scripts/ /app/
 ENV PORT 8000
 EXPOSE 8080
 
-RUN ["chmod", "+x", "/app/entrypoint-prod.sh"]
-ENTRYPOINT ["/app/entrypoint-prod.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
