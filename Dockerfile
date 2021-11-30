@@ -11,7 +11,7 @@ WORKDIR /app/backend
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
-COPY ./backend /app/backend
+
 # Install JS dependencies
 WORKDIR /app/frontend
 
