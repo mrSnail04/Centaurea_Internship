@@ -27,6 +27,7 @@ i.interceptors.response.use(response => {
         return response;
     },
     error => {
+        console.log(error)
         if (error.response.status === 401) {
             notAuthorized && notAuthorized();
         }
