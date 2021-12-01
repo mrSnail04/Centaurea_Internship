@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from .serializers import CartSerializer
 from customer.models import Cart, Product, CartProduct
-from registration.models import User
+from django.contrib.auth.models import User
 
 
 class CartViewSet(viewsets.ModelViewSet):

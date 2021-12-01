@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from customer.models import Cart, CartProduct, Product
 from ..main.serializers import EventSerializer
-from registration.models import User
+from django.contrib.auth.models import User
 
 
 class ProductSerializer(serializers.ModelSerializer):
