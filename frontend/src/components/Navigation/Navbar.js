@@ -58,19 +58,19 @@ const Logout = (props) => (<>
             </span>
         </Link>
     </li>
-    {/*{props.user.is_staff? <AdminLink/> : null}*/}
+    {props.user.is_staff? <AdminLink/> : null}
     <li className="nav-item">
         <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
     </li>
 </>)
 
-// const AdminLink = () => {
-//     <li className="nav-item">
-//         <Link style={{textDecoration: 'none'}} to={'#'}>
-//             <span className="nav-link">
-//                 Панель администратора
-//             </span>
-//         </Link>
-//     </li>
-// }
+const AdminLink = () => (
+    <li className="nav-item">
+        <Link style={{textDecoration: 'none'}} to={'#'}>
+            <span className="nav-link">
+                Панель администратора
+            </span>
+        </Link>
+    </li>
+)
 
