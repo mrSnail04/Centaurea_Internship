@@ -12,7 +12,7 @@ INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
 
 # Must insert after SecurityMiddleware, which is first in settings/common.py
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-AUTH_USER_MODEL = "registration.User"
+
 '''
 TEMPLATES: directories with templates (e.g. Jinja) or html files
 STATICFILES_DIRS: directory where Django can find html, js, css, and other static assets
