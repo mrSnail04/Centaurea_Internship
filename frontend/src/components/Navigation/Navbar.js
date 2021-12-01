@@ -66,7 +66,7 @@ const Logout = (props) => (<>
 
 const AdminLink = () => (
     <li className="nav-item">
-        <Link style={{textDecoration: 'none'}} to={'#'}>
+        <Link style={{textDecoration: 'none'}} to={'https://ancient-oasis-20487.herokuapp.com/admin'}>
             <span className="nav-link">
                 Панель администратора
             </span>
