@@ -38,6 +38,7 @@ i.interceptors.response.use(response => {
 const login = async (login, password) => {
     return i.post('/auth/token/login', {username: login, password: password})
         .then((response) => {
+            console.log(response)
             if (response?.data?.auth_token) {
                 localStorage.setItem('auth_token', response.data['auth_token']);
                 return response;
