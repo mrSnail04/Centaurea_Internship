@@ -50,6 +50,15 @@ const AuthLink = () => (<>
     </li>
 </>)
 
+const AdminLink = () => {
+    <li className="nav-item">
+        <Link style={{textDecoration: 'none'}} to={'#'}>
+            <span className="nav-link">
+                Панель администратора
+            </span>
+        </Link>
+    </li>
+}
 const Logout = (props) => (<>
     <li className="nav-item">
         <Link style={{textDecoration: 'none'}} to={'/profile'}>
@@ -61,6 +70,10 @@ const Logout = (props) => (<>
 
     <li className="nav-item">
         <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
+    </li>
+    <li>
+        {console.log(props.user?)}
+        {props.user?.is_staff? <AdminLink/>}
     </li>
 </>)
 

@@ -42,7 +42,6 @@ export const Registration = (props) => {
 
     const submit = async () => {
         let result = await API.registration(username, password, firstname, lastname, email);
-        console.log(result)
         if (result?.statusText === 'Created') {
             console.log(result.statusText)
             props.getUser();
