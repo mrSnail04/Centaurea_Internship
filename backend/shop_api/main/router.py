@@ -6,6 +6,7 @@ from ..registration.view import LogoutViewSet
 
 router = routers.SimpleRouter()
 router.register('', LogoutViewSet, basename='logout')
+router.register('getuser', UserViewSet, basename='user')
 router.register('cart', CartViewSet, basename='cart')
 router.register('event', EventViewSet, basename='event')
 router.register('party', PartyViewSet, basename='party')
