@@ -4,7 +4,9 @@ from rest_framework.decorators import action
 from rest_framework import response
 from rest_framework.permissions import IsAuthenticated
 from .serializers import TokenSerializer, UserSerializer
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class LogoutViewSet(viewsets.ViewSet):
 
@@ -15,3 +17,13 @@ class LogoutViewSet(viewsets.ViewSet):
     def logout(self, request, *args, **kwargs):
         request.user.auth_token.delete()
         return response.Response(status=status.HTTP_201_CREATED)
+
+class UserViewSet(viewsets.ModelViewSet):
+
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    @staticmethod
+    def get_user(self, *args, **kwargs):
+        return User.objects.get(id=self.user.id)

@@ -83,9 +83,13 @@ const logout = async () => {
 }
 
 const me = async () => {
-    return i.get('/auth/users/me').then((response) => {
-        let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-        return user;
+    // return i.get('/auth/users/me').then((response) => {
+    //     let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+    //     return user;
+        return i.get('/api/user').then((response) => {
+            console.log(response)
+            let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+            return user;
     })
         .catch((error) => {
             return <h1>error</h1>;
