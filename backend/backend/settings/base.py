@@ -110,6 +110,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 AUTH_USER_MODEL = "registration.User"
 
 # Database
+
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
