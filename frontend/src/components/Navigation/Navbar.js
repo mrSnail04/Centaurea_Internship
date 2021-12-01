@@ -13,6 +13,7 @@ export const Navbar = (props) => {
                             <Link style={{textDecoration: 'none'}} to={'/'}>
                                 <span className="nav-link">
                                     My TicketShop
+                                    {console.log(props.user)}
                                 </span>
                             </Link>
                         </li>
@@ -70,10 +71,6 @@ const Logout = (props) => (<>
 
     <li className="nav-item">
         <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
-    </li>
-    <li>
-        {console.log(props.user?)}
-        {props.user?.is_staff? <AdminLink/>}
     </li>
 </>)
 
