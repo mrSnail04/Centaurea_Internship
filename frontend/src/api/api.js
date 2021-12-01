@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const i = axios.create({
-    baseURL: "http://0.0.0.0:$PORT",
+    baseURL: "https://ancient-oasis-20487.herokuapp.com",
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,6 @@ const login = async (login, password) => {
             }
         }, (error) => {
             console.log(error)
-            return <h1>error</h1>;
         })
 }
 
