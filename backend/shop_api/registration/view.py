@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from rest_framework import response
 from rest_framework.permissions import IsAuthenticated
 from .serializers import TokenSerializer, UserSerializer
-
+from django.contrib.auth.models import User
 
 class LogoutViewSet(viewsets.ViewSet):
 
