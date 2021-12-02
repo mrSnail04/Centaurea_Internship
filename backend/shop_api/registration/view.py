@@ -25,4 +25,4 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, *args, **kwargs):
-        return User.objects.get(id=self.user.id)
+        return User.objects.get(user=self.user)
