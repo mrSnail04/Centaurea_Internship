@@ -23,7 +23,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    @action(methods=['get'],detail=False, permission_classes=[IsAuthenticated],
-            url_path='/get_user')
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, *args, **kwargs):
         return User.objects.get(id=self.user.id)
