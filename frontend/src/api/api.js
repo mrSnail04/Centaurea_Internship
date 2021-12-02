@@ -85,7 +85,7 @@ const logout = async () => {
 }
 
 const user_is_admin = async (id) => {
-    return i.post('/api/user', {
+    return i.post('/api/user-admin', {
         id:id
     }).then((response) => {
         console.log(response)
