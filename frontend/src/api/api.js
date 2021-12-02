@@ -104,8 +104,12 @@ const me = async () => {
             let user_admin = await user_admin(id);
             if (user_admin?.id?){
                 user = user_admin
+                return user;
             }
-            return user;
+            else{
+                return user;
+            }
+
     }).catch((error) => {
         return <h1>error</h1>;
     })
