@@ -16,7 +16,7 @@ export const setCallbackFor401 = (callback) => {
 
 
 i.interceptors.request.use(config => {
-    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/api/user') {
+    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me') {
         console.log(config)
         return config
     }
@@ -85,29 +85,38 @@ const logout = async () => {
     })
 }
 
+const user_admin = async (id) => {
+    return i.post('/api/user', {
+        id:id
+    }).then((response) => {
+        console.log(response)
+        return response
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
 const me = async () => {
     return i.get('/auth/users/me').then((response) => {
         console.log(response.data)
         let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+        let user_admin = await user_admin(id);
+        if (user_admin?.id?){
+            user = user_admin
+        }
         return user;
-        // return i.get('/api/user').then((response) => {
-        //     console.log(response.data)
-        //     let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-        //     return user;
+    }).catch((error) => {
+        return <h1>error</h1>;
     })
-        .catch((error) => {
-            return <h1>error</h1>;
-        })
 }
 
 const cartUser = async () => {
     return i.get('/api/cart/current_customer_cart').then((response) => {
         let cart = response.data
         return cart;
+    }).catch((error) => {
+        return <h1>error</h1>;
     })
-        .catch((error) => {
-            return <h1>error</h1>;
-        })
 }
 
 const changeQty = async (count, product) => {
