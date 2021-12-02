@@ -100,7 +100,7 @@ const me = async () => {
     //     return user;
         return i.get('/api/user').then((response) => {
             console.log(response.data)
-            let user = response.data[0] // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+            let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             return user;
     })
         .catch((error) => {
