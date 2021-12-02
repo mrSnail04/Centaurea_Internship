@@ -25,4 +25,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, request, *args, **kwargs):
-        return User.objects.filter(id=request.user.id).first()
+        return request
+
+    # User.objects.filter(id=request.user.id).first()
