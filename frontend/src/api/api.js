@@ -85,7 +85,7 @@ const logout = async () => {
     })
 }
 
-const user_admin = async (id) => {
+const user_is_admin = async (id) => {
     return i.post('/api/user', {
         id:id
     }).then((response) => {
@@ -101,12 +101,12 @@ const me = async () => {
         async (response) => {
             console.log(response.data)
             let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-            let user_admin = await user_admin(id);
-            if (user_admin?.id?){
+            let user_admin = await user_is_admin(id);
+            if (user_admin?.id?) {
                 user = user_admin
                 return user;
             }
-            else{
+            else {
                 return user;
             }
 
