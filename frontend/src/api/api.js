@@ -16,7 +16,7 @@ export const setCallbackFor401 = (callback) => {
 
 
 i.interceptors.request.use(config => {
-    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me') {
+    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/api/user') {
         console.log(config)
         return config
     }
@@ -97,6 +97,7 @@ const logout = async () => {
 
 const me = async () => {
     return i.get('/auth/users/me').then((response) => {
+        console.log(response.data)
         let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
         return user;
         // return i.get('/api/user').then((response) => {
