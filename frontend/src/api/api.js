@@ -17,7 +17,6 @@ export const setCallbackFor401 = (callback) => {
 
 i.interceptors.request.use(config => {
     if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me') {
-        console.log(config)
         return config
     }
     config.headers['Authorization'] = localStorage.getItem("auth_token") ? 'Token ' + localStorage.getItem("auth_token") : null;
@@ -101,8 +100,11 @@ const me = async () => {
         async (response) => {
             console.log(response.data)
             let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+            console.log(user)
             let id = response.data.id
+            console.log(id)
             let user_admin = await user_is_admin(id);
+            console.log(user_admin)
             if (user_admin?.id) {
                 user = user_admin
                 return user;
