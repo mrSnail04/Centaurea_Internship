@@ -57,7 +57,11 @@ const AuthLink = () => (<>
 
 const Logout = (props) => (<>
     <li className="nav-item">
-        <button type="button" className="btn btn-light" onClick={sub}>Панель администратора</button>
+        <Link style={{textDecoration: 'none'}} to={'/profile'}>
+            <span className="nav-link">
+                {props.user.username}
+            </span>
+        </Link>
     </li>
     {props.user.is_staff? <AdminLink/> : null}
     <li className="nav-item">
