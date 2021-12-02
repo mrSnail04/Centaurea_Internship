@@ -32,7 +32,12 @@ const submit = async () => {
     let result = await API.logout();
     return result;
 }
-
+///
+const sub = async () => {
+    let result = await API.adminPage();
+    return result;
+}
+//
 const AuthLink = () => (<>
     <li className="nav-item">
         <Link style={{textDecoration: 'none'}} to={'/login'}>
@@ -52,11 +57,7 @@ const AuthLink = () => (<>
 
 const Logout = (props) => (<>
     <li className="nav-item">
-        <Link style={{textDecoration: 'none'}} to={'/profile'}>
-            <span className="nav-link">
-                {props.user.username}
-            </span>
-        </Link>
+        <button type="button" className="btn btn-light" onClick={sub}>Панель администратора</button>
     </li>
     {props.user.is_staff? <AdminLink/> : null}
     <li className="nav-item">
@@ -66,7 +67,7 @@ const Logout = (props) => (<>
 
 const AdminLink = () => (
     <li className="nav-item">
-        <Link style={{textDecoration: 'none'}} to={'https://ancient-oasis-20487.herokuapp.com/admin'}>
+        <Link style={{textDecoration: 'none'}} to={'/admin'}>
             <span className="nav-link">
                 Панель администратора
             </span>

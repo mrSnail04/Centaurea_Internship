@@ -18,7 +18,7 @@ const login = "/login";
 const registration = "/registration";
 const reset_password = "/reset-password";
 const profile = "/profile";
-
+const admin = "/admin";
 
 export const App = () => {
 
@@ -97,7 +97,9 @@ export const App = () => {
                            component={!user?.id ? () => <Redirect to={login}/> : () =>
                                <Profile getCart={getCart} user={user} cart={cart}/>}/>
                     <Route path="/event/:slug"><EventPage/></Route>
-
+                    <Route path={admin}
+                           component={!user?.is_staff? () => <Redirect to={home}/> : () =>
+                               <Redirect to='https://ancient-oasis-20487.herokuapp.com/admin'/>}/>
                     <Route path={"*"} component={NotFound}/>
                 </Switch>
             </Layout>

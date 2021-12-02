@@ -81,6 +81,16 @@ const logout = async () => {
         return <h1>error</h1>;
     })
 }
+///
+// const adminPage = async () => {
+//     return i.get('/admin').then((response) => {
+//         localStorage.removeItem('auth_token')
+//         return notAuthorized();
+//     }).catch((error) => {
+//         return <h1>error</h1>;
+//     })
+// }
+////
 
 const me = async () => {
     // return i.get('/auth/users/me').then((response) => {
