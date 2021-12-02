@@ -16,7 +16,7 @@ export const setCallbackFor401 = (callback) => {
 
 
 i.interceptors.request.use(config => {
-    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me') {
+    if (config.url === '/auth/token/login' || config.url === '/auth/users/') {
         return config
     }
     config.headers['Authorization'] = localStorage.getItem("auth_token") ? 'Token ' + localStorage.getItem("auth_token") : null;
