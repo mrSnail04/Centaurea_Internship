@@ -97,14 +97,15 @@ const user_admin = async (id) => {
 }
 
 const me = async () => {
-    return i.get('/auth/users/me').then((response) => {
-        console.log(response.data)
-        let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-        let user_admin = await user_admin(id);
-        if (user_admin?.id?){
-            user = user_admin
-        }
-        return user;
+    return i.get('/auth/users/me').then(
+        async (response) => {
+            console.log(response.data)
+            let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+            let user_admin = await user_admin(id);
+            if (user_admin?.id?){
+                user = user_admin
+            }
+            return user;
     }).catch((error) => {
         return <h1>error</h1>;
     })
