@@ -76,6 +76,7 @@ const registration = async (username, password, firstname, lastname, email) => {
 
 const logout = async () => {
     return i.get('/api/logout').then((response) => {
+        {console.log(response)}
         localStorage.removeItem('auth_token')
         return notAuthorized();
     }).catch((error) => {
@@ -97,7 +98,7 @@ const me = async () => {
     // return i.get('/auth/users/me').then((response) => {
     //     let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
     //     return user;
-        return i.get('/api/user').then((response) => {
+        return i.get('/api/user/get_user').then((response) => {
             console.log(response.data)
             let user = response.data[0] // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             return user;
