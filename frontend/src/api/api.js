@@ -102,7 +102,7 @@ const me = async () => {
             console.log(response.data)
             let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             let user_admin = await user_is_admin(id);
-            if (user_admin?.id?) {
+            if (user_admin?.id) {
                 user = user_admin
                 return user;
             }
