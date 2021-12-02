@@ -23,7 +23,6 @@ export const Login = (props) => {
 
     const submit = async () => {
         let result = await API.login(login, password);
-        console.log(login)
         if (result.data && result.data['auth_token']) {
             props.getUser();
         }

@@ -16,7 +16,8 @@ export const setCallbackFor401 = (callback) => {
 
 
 i.interceptors.request.use(config => {
-    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/api/user/') {
+    if (config.url === '/auth/token/login' || config.url === '/auth/users/' || config.url === '/auth/users/me') {
+        console.log(config)
         return config
     }
     config.headers['Authorization'] = localStorage.getItem("auth_token") ? 'Token ' + localStorage.getItem("auth_token") : null;
@@ -95,13 +96,13 @@ const logout = async () => {
 ////
 
 const me = async () => {
-    // return i.get('/auth/users/me').then((response) => {
-    //     let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-    //     return user;
-        return i.get('/api/user').then((response) => {
-            console.log(response.data)
-            let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-            return user;
+    return i.get('/auth/users/me').then((response) => {
+        let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+        return user;
+        // return i.get('/api/user').then((response) => {
+        //     console.log(response.data)
+        //     let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+        //     return user;
     })
         .catch((error) => {
             return <h1>error</h1>;
