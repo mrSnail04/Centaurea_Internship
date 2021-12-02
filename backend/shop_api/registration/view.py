@@ -25,6 +25,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, request, *args, **kwargs):
-        data = request.data
+        data = self.request.data
         user = User.objects.get(id=self.request.data.id)
         return data
