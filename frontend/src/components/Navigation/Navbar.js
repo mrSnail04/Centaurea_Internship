@@ -69,7 +69,7 @@ const Logout = (props) => (<>
     </li>
 </>)
 
-const AdminLink = () => (
+const AdminLink = () => (<>
     <li className="nav-item">
         <Link style={{textDecoration: 'none'}} to={'/admin'}>
             <span className="nav-link">
@@ -77,5 +77,12 @@ const AdminLink = () => (
             </span>
         </Link>
     </li>
-)
+    <li className="nav-item">
+        <Link style={{textDecoration: 'none'}} to={'/addevent'}>
+            <span className="nav-link">
+                Добавить мероприятие
+            </span>
+        </Link>
+    </li>
+</>)
 

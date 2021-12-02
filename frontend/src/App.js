@@ -28,6 +28,7 @@ export const App = () => {
 
     const getUser = async () => {
         let user = await API.me();
+        {console.log(user)}
         if (user?.id) {
             setUser(user);
         } else {

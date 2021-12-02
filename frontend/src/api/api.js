@@ -60,6 +60,7 @@ const registration = async (username, password, firstname, lastname, email) => {
     }).then(
         //resolved
         async (response) => {
+            {console.log(response)}
             let data = await login(username, password);
             if (data && data.status === 200) {
                 return response
