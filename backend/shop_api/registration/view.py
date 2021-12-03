@@ -26,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(methods=['post'], url_path='getuser', detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, request, *args, **kwargs):
         data = request.data.get('id')
-        serializer = UserSerializer(data=data)
+        serializer = UserSerializer(User.objects.get(id=data), many=True)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return response.Response(serializer.data, status=status.HTTP_201_CREATED)
