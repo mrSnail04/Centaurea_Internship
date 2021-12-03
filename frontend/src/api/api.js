@@ -85,13 +85,12 @@ const logout = async () => {
 }
 
 const user_is_admin = async (id) => {
-    return i.patch('/api/user-admin/getuser/', {
-        id: id
-    }).then((response) => {
+    return i.get(`api/user-admin/getuser/${id}`).then((response) => {
         console.log(response)
-        return response
+        return response;
     }).catch((error) => {
         console.log(error)
+        return error;
     })
 }
 
