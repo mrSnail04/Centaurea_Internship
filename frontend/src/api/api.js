@@ -6,9 +6,6 @@ const i = axios.create({
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '0.0.0.0:$PORT',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
-        'Access-Control-Allow-Credentials': true,
     }
 })
 
@@ -23,9 +20,6 @@ i.interceptors.request.use(config => {
         return config
     }
     config.headers['Authorization'] = localStorage.getItem("auth_token") ? 'Token ' + localStorage.getItem("auth_token") : null;
-    config.headers['Access-Control-Allow-Origin'] = '*';
-    config.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,OPTIONS';
-    config.headers['Access-Control-Allow-Credentials'] = true;
     return config;
 });
 

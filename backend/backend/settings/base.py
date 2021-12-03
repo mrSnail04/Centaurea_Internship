@@ -66,7 +66,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
-    'http://0.0.0.0:$PORT',
     'https://ancient-oasis-20487.herokuapp.com',
 ]
 SOCIALACCOUNT_PROVIDERS = {
