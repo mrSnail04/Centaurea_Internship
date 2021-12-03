@@ -88,7 +88,7 @@ const user_is_admin = async (id) => {
     console.log(id)
     return i.get(`/api/user-admin/${id}`).then((response) => {
         console.log(response)
-        return response;
+        return response.data;
     }).catch((error) => {
         console.log(error)
         return error;
