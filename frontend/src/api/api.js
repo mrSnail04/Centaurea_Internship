@@ -106,13 +106,13 @@ const me = async () => {
             let user_admin = user_is_admin(id);
             console.log(user_admin)
             return user;
-            // if (user_admin?.id) {
-            //     user = user_admin
-            //     return user;
-            // }
-            // else {
-            //     return user;
-            // }
+            if (user_admin?.id?) {
+                user = user_admin
+                return user;
+            }
+            else {
+                return user;
+            }
 
     }).catch((error) => {
         return <h1>error</h1>;
