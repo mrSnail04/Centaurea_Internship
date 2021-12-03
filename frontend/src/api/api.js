@@ -99,9 +99,9 @@ const me = async () => {
     return i.get('/auth/users/me').then(
         async (response) => {
             console.log(response.data)
-            let user = response.data // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
+            let user = response.data; // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             console.log(user)
-            let id = response.data.id
+            let id = response.data.id;
             console.log(id)
             let user_admin = user_is_admin(id);
             console.log(user_admin)
