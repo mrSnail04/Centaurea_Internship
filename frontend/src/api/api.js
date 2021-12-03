@@ -107,12 +107,7 @@ const me = async () => {
             console.log(response.data)
             let user = response.data; // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             console.log(user)
-            let id = response.data.id;
-            console.log(id)
-            let user_admin = await user_is_admin(id);
-            console.log(user_admin)
-
-
+            return user;
     }).catch((error) => {
         return <h1>error</h1>;
     })
