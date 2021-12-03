@@ -6,7 +6,9 @@ const i = axios.create({
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://ancient-oasis-20487.herokuapp.com',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+        'Access-Control-Allow-Credentials': true,
     }
 })
 
