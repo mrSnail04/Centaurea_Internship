@@ -6,7 +6,7 @@ const i = axios.create({
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '0.0.0.0:$PORT',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
         'Access-Control-Allow-Credentials': true,
     }
