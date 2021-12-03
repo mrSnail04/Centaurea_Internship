@@ -26,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(methods=['get'], detail=False, url_path='(?P<id>.+)')
     def user_admin(self, *args, **kwargs):
         id = kwargs['id']
-        return id
+        return response.Response(id)
         # data_user = User.objects.filter(id=kwargs['id'])
         # serializer = UserSerializer(data_user)
         # return response.Response(serializer.data, status=status.HTTP_201_CREATED)
