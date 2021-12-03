@@ -23,7 +23,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    @action(methods=['get'], url_path='(?P<id>.+)', detail=False)
+    @action(methods=['get'], url_path='getuser/(?P<id>\d+)', detail=False)
     def get_user(self, request, *args, **kwargs):
         serializer = UserSerializer(User.objects.get(id=kwargs['id']), many=True)
         if serializer.is_valid(raise_exception=True):
