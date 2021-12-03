@@ -25,7 +25,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=['post'], url_path='getuser', detail=False, permission_classes=[IsAuthenticated])
     def get_user(self, request, *args, **kwargs):
-        data = request.data.get()
+        data = request.data.get('id')
         serializer = UserSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()

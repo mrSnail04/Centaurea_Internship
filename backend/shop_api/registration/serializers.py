@@ -13,7 +13,7 @@ class UserCreateSerializer(UserCreateSerializer):
 
 class UserSerializer(UserCreateSerializer):
 
-    def get(self, validated_data):
+    def post(self, validated_data):
         id = validated_data.get('id')
         return User.objects.get(id=id)
 
