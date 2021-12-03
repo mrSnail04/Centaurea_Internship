@@ -86,9 +86,15 @@ const logout = async () => {
 
 const user_is_admin = async (id) => {
     console.log(id)
-    return i.get(`/api/user-admin/${id}`).then((response) => {
+    i.get(`/api/user-admin/${id}`).then((response) => {
         console.log(response)
-        return response.data;
+        if (response.data && response.data.is_staff) {
+                return response.data;
+            }
+            else {
+                return null;
+            }
+
     }).catch((error) => {
         console.log(error)
         return error;
@@ -105,15 +111,7 @@ const me = async () => {
             console.log(id)
             let user_admin = await user_is_admin(id);
             console.log(user_admin)
-            if (user_admin && user_admin.is_staff) {
-                user = user_admin.data
-                console.log(user)
 
-                return user;
-            }
-            else {
-                return user;
-            }
 
     }).catch((error) => {
         return <h1>error</h1>;

@@ -19,7 +19,7 @@ export const Navbar = (props) => {
                     </ul>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {!props.user? <AuthLink/> : <Logout user={props.user}/>}
+                            {!props.user? <AuthLink/> : <Logout user={props.user} useradmin={props.useradmin}/>}
                         </ul>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ const Logout = (props) => (<>
             </span>
         </Link>
     </li>
-    {props.user.is_staff? <AdminLink/> : null}
+    {props.useradmin.is_staff? <AdminLink/> : null}
     <li className="nav-item">
         <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
     </li>

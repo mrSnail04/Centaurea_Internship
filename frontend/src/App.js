@@ -25,6 +25,7 @@ export const App = () => {
     const [user, setUser] = useState(undefined);
     const [cart, setCart] = useState(undefined);
     const [events, setEvents] = useState(undefined);
+    const [useradmin, setUserAdmin] = useState(undefined);
 
     const getUser = async () => {
         let user = await API.me();
@@ -33,6 +34,17 @@ export const App = () => {
             setUser(user);
         } else {
             setUser(null);
+        }
+    }
+
+    const getUserAdmin = async (user) => {
+
+        let user_admin = await API.user_is_admin(user.id);
+        {console.log(user_admin)}
+        if (user_admin?.id) {
+            setUserAdmin(user_admin);
+        } else {
+            setUserAdmin(null);
         }
     }
 
@@ -58,6 +70,7 @@ export const App = () => {
             getUser();
             getCart();
             getEvent();
+            getUserAdmin();
         }
         if (localStorage.getItem("auth_token")) {
             fetchData();
@@ -83,7 +96,7 @@ export const App = () => {
 
     return (
         <Router>
-            <Layout user={user} notauthorized={notauthorized}>
+            <Layout user={user} useradmin={useradmin} notauthorized={notauthorized}>
                 <Switch>
                     <Route exact path={home}
                            component={!user?.id ? () => <Redirect to={login}/> : () => <Home events={events}/>}/>
@@ -98,11 +111,11 @@ export const App = () => {
                            component={!user?.id ? () => <Redirect to={login}/> : () =>
                                <Profile getCart={getCart} user={user} cart={cart}/>}/>
                     <Route path="/event/:slug"><EventPage/></Route>
-                    {/*<Route path={admin}*/}
-                    {/*       component={!user?.is_staff? () => <Redirect to={home}/> : () => {*/}
-                    {/*           window.location.href = 'https://ancient-oasis-20487.herokuapp.com/admin';*/}
-                    {/*           return null;*/}
-                    {/*       }}/>*/}
+                    <Route path={admin}
+                           component={!user?.is_staff? () => <Redirect to={home}/> : () => {
+                               window.location.href = 'https://ancient-oasis-20487.herokuapp.com/admin';
+                               return null;
+                           }}/>
                     <Route path={"*"} component={NotFound}/>
                 </Switch>
             </Layout>
