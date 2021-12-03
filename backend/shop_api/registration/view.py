@@ -24,10 +24,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
     @action(methods=['get'], detail=False, url_path='(?P<id>\d+)')
-    def list(self, *args, **kwargs):
+    def user_admin(self, *args, **kwargs):
         data_user = User.objects.filter(id=kwargs['id'])
         serializer = UserSerializer(data_user)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return response.Response(serializer.data, status=status.HTTP_201_CREATED)
-        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST
