@@ -13,10 +13,6 @@ class UserCreateSerializer(UserCreateSerializer):
 
 class UserSerializer(UserCreateSerializer):
 
-    def post(self, validated_data):
-        id = validated_data.get('id')
-        return User.objects.get(id=id)
-
     class Meta(UserCreateSerializer.Meta):
         model = User
         fields = '__all__'
