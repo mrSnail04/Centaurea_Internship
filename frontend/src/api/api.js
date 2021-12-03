@@ -86,7 +86,7 @@ const logout = async () => {
 
 const user_is_admin = async (id) => {
     console.log(id)
-    return i.get(`/api/user-admin/getuser/${id}`).then((response) => {
+    return i.get(`/api/user-admin/getuser/${id}/`).then((response) => {
         console.log(response)
         return response;
     }).catch((error) => {
