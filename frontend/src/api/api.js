@@ -105,7 +105,7 @@ const me = async () => {
             console.log(id)
             let user_admin = await user_is_admin(id);
             console.log(user_admin)
-            if (user_admin.data && user_admin.data.is_staff) {
+            if (user_admin && user_admin.is_staff) {
                 user = user_admin.data
                 console.log(user)
 
