@@ -24,9 +24,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
     @action(methods=['get'], url_path='getuser/(?P<id>\d+)', detail=False)
-    def get_user(self, request, *args, **kwargs):
-        serializer = UserSerializer(User.objects.get(id=kwargs['id']), many=True)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return response.Response(serializer.data, status=status.HTTP_201_CREATED)
-        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def user(self, *args, **kwargs):
+        data_user = User.objects.filter(id=kwargs['id'])
+        user_serializer = UserSerializer(data_user)
+        if user_serializer.is_valid(raise_exception=True):
+            user_serializer.save()
+            return response.Response(user_serializer.data, status=status.HTTP_201_CREATED)
+        return response.Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
