@@ -28,4 +28,4 @@ class UserViewSet(viewsets.ModelViewSet):
         id = kwargs['id']
         data_user = User.objects.filter(id=id)
         # serializer = UserSerializer(data_user)
-        return response.Response(data_user)
+        return response.Response(data_user.username)
