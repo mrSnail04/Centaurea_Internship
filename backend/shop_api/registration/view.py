@@ -23,7 +23,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    @action(methods=['get'], detail=False, url_path='(?P<id>\d+)')
+    @action(methods=['get'], detail=False, url_path='(?P<id>.+)')
     def user_admin(self, *args, **kwargs):
         id = kwargs['id']
         return id
