@@ -168,4 +168,5 @@ export const API = {
     deleteProduct,
     events,
     event,
+    user_is_admin
 }
