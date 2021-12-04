@@ -63,6 +63,7 @@ const Logout = (props) => (<>
             </span>
         </Link>
     </li>
+    {props.useradmin.is_staff}
     {/*{props.useradmin?.is_staff? <AdminLink/> : null}*/}
     <li className="nav-item">
         <button type="button" className="btn btn-light" onClick={submit}>Выход</button>
