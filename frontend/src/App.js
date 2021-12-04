@@ -32,15 +32,7 @@ export const App = () => {
         {console.log(user)}
         if (user?.id) {
             setUser(user);
-            getUserAdmin(user);
-        } else {
-            setUser(null);
-        }
-    }
-
-    const getUserAdmin = async (user) => {
-        console.log(user)
-        if (user?.id){
+            console.log(user);
             let user_admin = await API.user_is_admin(user.id);
             {console.log(user_admin)}
             if (user_admin?.id) {
@@ -48,9 +40,20 @@ export const App = () => {
             } else {
                 setUserAdmin(null);
             }
+        } else {
+            setUser(null);
+            setUserAdmin(null);
         }
-        else{
-            setUserAdmin(null)
+    }
+
+    const getUserAdmin = async (user) => {
+        console.log(user)
+        let user_admin = await API.user_is_admin(user.id);
+        {console.log(user_admin)}
+        if (user_admin?.id) {
+            setUserAdmin(user_admin);
+        } else {
+            setUserAdmin(null);
         }
     }
 
