@@ -86,7 +86,7 @@ const logout = async () => {
 
 const user_is_admin = async (id) => {
     i.get(`/api/user-admin/${id}`).then((response) => {
-        console.log(response)
+        console.log(response.data)
         if (response.data && response.data.is_staff) {
                 return response.data;
             }
