@@ -85,7 +85,6 @@ const logout = async () => {
 }
 
 const user_is_admin = async (id) => {
-    console.log(id)
     i.get(`/api/user-admin/${id}`).then((response) => {
         console.log(response)
         if (response.data && response.data.is_staff) {
@@ -104,7 +103,6 @@ const user_is_admin = async (id) => {
 const me = async () => {
     return i.get('/auth/users/me').then(
         async (response) => {
-            console.log(response.data)
             let user = response.data; // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             console.log(user)
             return user;
