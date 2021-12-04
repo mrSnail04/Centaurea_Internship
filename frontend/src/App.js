@@ -32,13 +32,15 @@ export const App = () => {
         {console.log(user)}
         if (user?.id) {
             setUser(user);
+            getUserAdmin(user);
         } else {
             setUser(null);
         }
     }
 
     const getUserAdmin = async (user) => {
-        if (user.id){
+        console.log(user)
+        if (user?.id){
             let user_admin = await API.user_is_admin(user.id);
             {console.log(user_admin)}
             if (user_admin?.id) {
@@ -74,7 +76,6 @@ export const App = () => {
             getUser();
             getCart();
             getEvent();
-            getUserAdmin();
         }
         if (localStorage.getItem("auth_token")) {
             fetchData();
