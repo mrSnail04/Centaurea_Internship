@@ -6,21 +6,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export const AddEventPage = () => {
     return (<>
         <div>
-            <Link style={{textDecoration: 'none'}} to={'/classical-concert'}>
+            <Link className="badge badge-primary" to={'/classical-concert'}>
                 <span className="badge badge-primary">
                     Добавить классический концерт
                 </span>
             </Link>
         </div>
         <div>
-            <Link style={{textDecoration: 'none'}} to={'/party'}>
+            <Link className="badge badge-primary" to={'/party'}>
                 <span className="badge badge-primary">
                     Добавить пати
                 </span>
             </Link>
         </div>
         <div>
-            <Link style={{textDecoration: 'none'}} to={'/open-air'}>
+            <Link className="badge badge-primary" to={'/open-air'}>
                 <span className="badge badge-primary">
                     Добавить ОпенАир
                 </span>
