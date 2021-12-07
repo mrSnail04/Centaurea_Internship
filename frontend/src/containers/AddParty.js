@@ -82,7 +82,7 @@ export const AddParty = () => {
                 <hr/>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className="input-group-text">Название</span>
+                        <span style={{width:'200px'}} className="input-group-text">Название</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -92,7 +92,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className="input-group-text">Артист/Группа</span>
+                        <span style={{width:'200px'}} className="input-group-text">Артист/Группа</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -102,7 +102,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className="input-group-text">Слаг</span>
+                        <span style={{width:'200px'}} className="input-group-text">Слаг</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -112,7 +112,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className="input-group-text">Кол-во билетов</span>
+                        <span style={{width:'200px'}} className="input-group-text">Кол-во билетов</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -122,7 +122,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className=" input-group-text">Адрес</span>
+                        <span style={{width:'200px'}} className=" input-group-text">Адрес</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -132,7 +132,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className=" input-group-text">Тип мероприятия</span>
+                        <span style={{width:'200px'}} className=" input-group-text">Тип мероприятия</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -142,7 +142,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className=" input-group-text">Дата мероприятия</span>
+                        <span style={{width:'200px'}} className=" input-group-text">Дата мероприятия</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -152,7 +152,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className=" input-group-text">Возрастной лимит</span>
+                        <span style={{width:'200px'}} className=" input-group-text">Возрастной лимит</span>
                     </div>
                     <div>
                         <input className="form-control"
@@ -162,7 +162,7 @@ export const AddParty = () => {
                 </div>
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span style={{width:'150px'}} className=" input-group-text">Изображение</span>
+                        <span style={{width:'200px'}} className=" input-group-text">Изображение</span>
                     </div>
                     <div>
                         <input className="form-control"
