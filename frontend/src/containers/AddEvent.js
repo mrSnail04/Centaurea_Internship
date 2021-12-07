@@ -7,13 +7,13 @@ export const AddEventPage = () => {
     return (<>
         <div>
             <Link to={'/classical-concert'}>
-                <span className="badge badge-pill badge-primary">
+                <span>
                     Добавить классический концерт
                 </span>
             </Link>
         </div>
         <div>
-            <Link to={'/party'}>
+            <Link style={{textDecoration: 'none'}} to={'/party'}>
                 <span className="nav-link">
                     Добавить пати
                 </span>
