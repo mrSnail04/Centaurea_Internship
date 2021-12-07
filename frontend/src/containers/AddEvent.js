@@ -3,7 +3,7 @@ import {API} from "../api/api";
 import {Link} from "react-router-dom";
 
 export const AddEventPage = () => {
-    return (
+    return (<>
         <div>
             <Link style={{textDecoration: 'none'}} to={'/classical-concert'}>
                 <span className="nav-link">
@@ -32,5 +32,5 @@ export const AddEventPage = () => {
                 </span>
             </Link>
         </div>
-    );
+    </>);
 }
