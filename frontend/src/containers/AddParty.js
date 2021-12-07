@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {API} from "../api/api";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const AddParty = () => {
 
