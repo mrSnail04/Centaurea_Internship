@@ -78,7 +78,7 @@ const AdminLink = () => (<>
         </Link>
     </li>
     <li className="nav-item">
-        <Link style={{textDecoration: 'none'}} to={'/addevent'}>
+        <Link style={{textDecoration: 'none'}} to={'/add-event'}>
             <span className="nav-link">
                 Добавить мероприятие
             </span>

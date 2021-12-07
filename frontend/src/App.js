@@ -23,7 +23,7 @@ const registration = "/registration";
 const reset_password = "/reset-password";
 const profile = "/profile";
 const admin = "/admin";
-const add_event = "/addevent";
+const add_event = "/add-event";
 const other_event = "/other-event"
 const party = "/party";
 const open_air = "/open-air";
@@ -127,7 +127,7 @@ export const App = () => {
                     <Route exact path={profile}
                            component={!user?.id ? () => <Redirect to={login}/> : () =>
                                <Profile getCart={getCart} user={user} cart={cart}/>}/>
-                    <Route exact path={add_event}
+                    <Route exact path="/add-event"
                            component={!user?.id ? () => <Redirect to={login}/> : () => <AddEventPage/>}/>
                     <Route exact path={party}
                            component={!user?.id ? () => <Redirect to={login}/> : () => <AddParty/>}/>
