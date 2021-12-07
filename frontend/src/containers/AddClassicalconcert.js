@@ -48,7 +48,7 @@ export const AddClassicalconcert = () => {
     const changeTypeEvent = (e) => {
         let newTypeEvent = e.currentTarget.value;
         //validation
-        setTypeEvent(setTypeEvent);
+        setTypeEvent(newTypeEvent);
     }
 
     const changeName = (e) => {
@@ -78,7 +78,7 @@ export const AddClassicalconcert = () => {
     const changeQtyTicket = (e) => {
         let newQtyTicket= e.currentTarget.value;
         //validation
-        setQtyTicket(ewQtyTicket);
+        setQtyTicket(newQtyTicket);
     }
 
     const submit = async () => {
@@ -86,7 +86,6 @@ export const AddClassicalconcert = () => {
                                         type_event, image, voice_type, name_concert, composer);
         if (result?.statusText === 'Created') {
             console.log(result.statusText)
-            props.getUser();
         }
     }
 

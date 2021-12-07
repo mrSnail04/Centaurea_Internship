@@ -34,7 +34,7 @@ export const AddParty = () => {
     const changeTypeEvent = (e) => {
         let newTypeEvent = e.currentTarget.value;
         //validation
-        setTypeEvent(setTypeEvent);
+        setTypeEvent(newTypeEvent);
     }
 
     const changeName = (e) => {
@@ -64,14 +64,13 @@ export const AddParty = () => {
     const changeQtyTicket = (e) => {
         let newQtyTicket= e.currentTarget.value;
         //validation
-        setQtyTicket(ewQtyTicket);
+        setQtyTicket(newQtyTicket);
     }
 
     const submit = async () => {
         let result = await API.add_event(name, actor, date, slug, qty_ticket, address, type_event, image, age_limit);
         if (result?.statusText === 'Created') {
             console.log(result.statusText)
-            props.getUser();
         }
     }
 

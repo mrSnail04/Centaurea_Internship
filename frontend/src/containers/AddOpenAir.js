@@ -41,7 +41,7 @@ export const AddOpenAir = () => {
     const changeTypeEvent = (e) => {
         let newTypeEvent = e.currentTarget.value;
         //validation
-        setTypeEvent(setTypeEvent);
+        setTypeEvent(newTypeEvent);
     }
 
     const changeName = (e) => {
@@ -71,7 +71,7 @@ export const AddOpenAir = () => {
     const changeQtyTicket = (e) => {
         let newQtyTicket= e.currentTarget.value;
         //validation
-        setQtyTicket(ewQtyTicket);
+        setQtyTicket(newQtyTicket);
     }
 
     const submit = async () => {
@@ -79,7 +79,7 @@ export const AddOpenAir = () => {
                                         address, type_event, image, route, headliner);
         if (result?.statusText === 'Created') {
             console.log(result.statusText)
-            props.getUser();
+
         }
     }
 
