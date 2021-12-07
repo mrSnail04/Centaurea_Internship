@@ -6,28 +6,28 @@ export const AddEventPage = () => {
     return (<>
         <div>
             <Link style={{textDecoration: 'none'}} to={'/classical-concert'}>
-                <span className="nav-link">
+                <span className="badge badge-primary">
                     Добавить классический концерт
                 </span>
             </Link>
         </div>
         <div>
             <Link style={{textDecoration: 'none'}} to={'/party'}>
-                <span className="nav-link">
+                <span className="badge badge-primary">
                     Добавить пати
                 </span>
             </Link>
         </div>
         <div>
             <Link style={{textDecoration: 'none'}} to={'/open-air'}>
-                <span className="nav-link">
+                <span className="badge badge-primary">
                     Добавить ОпенАир
                 </span>
             </Link>
         </div>
         <div>
             <Link style={{textDecoration: 'none'}} to={'/other-event'}>
-                <span className="nav-link">
+                <span className="badge badge-primary">
                     Добавить другое мероприятие
                 </span>
             </Link>
