@@ -24,7 +24,7 @@ class Event(models.Model):
     address = models.CharField(max_length=1024, verbose_name='Адрес')
     type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
                                   choices=TYPE_CHOICES, default=TYPE_OTHER)
-    image = models.CloudinaryField('image', verbose_name='Изображение', null=True, blank=True)
+    image = CloudinaryField('image', verbose_name='Изображение', null=True, blank=True)
     # image = models.ImageField(upload_to='images', verbose_name='Изображение', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавление мероприятия')
 
