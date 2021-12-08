@@ -8,7 +8,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
+CLOUDINARY = {
+  'cloud_name': 'centaurea',
+  'api_key': '938575553552299',
+  'api_secret': 'ZT0aSmsauK9c9Cp3VBNjNVnTfXM',
+}
+CLOUDINARY_URL=cloudinary://938575553552299:ZT0aSmsauK9c9Cp3VBNjNVnTfXM@centaurea
+export CLOUDINARY_CLOUD_NAME="centaurea"
+export CLOUDINARY_API_KEY="938575553552299"
+export CLOUDINARY_API_SECRET="ZT0aSmsauK9c9Cp3VBNjNVnTfXM"
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 
