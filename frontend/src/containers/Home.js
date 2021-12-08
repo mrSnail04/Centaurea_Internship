@@ -38,7 +38,8 @@ const Event = ({slug, name, img, event}) => {
 
         <div key={event.id} className="col-lg-4 col-md-6 mt-4">
             <div className="card h-100">
-                <Image cloudName="centaurea" publicId="halloween_st7r9p" />
+                <Image cloudName="centaurea" publicId={img} />
+                {/*<Image cloudName="centaurea" publicId="halloween_st7r9p" />*/}
                 {console.log({img})}
                 {/*<Link to={img}>*/}
                 {/*    {console.log(img)}*/}
