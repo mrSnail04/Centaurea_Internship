@@ -40,10 +40,10 @@ const Event = ({slug, name, img, event}) => {
             <div className="card h-100">
                 {/*<Image cloudName="centaurea" publicId="halloween_st7r9p" />*/}
                 {console.log({img})}
-                <Link to={img}>
+                <Link style={{textDecoration: 'none'}} to={`event/${slug}`}>
                     {console.log(img)}
                     <img height="400" className="card-img-top"
-                         src="https://res.cloudinary.com/hhp1uohee"{img} alt="pic"/>
+                         src={"https://res.cloudinary.com/hhp1uohee/"+img} alt="pic"/>
                 </Link>
                 <div className="card-body text-center">
                     <h5 className="card-title">
