@@ -53,17 +53,6 @@ export const App = () => {
         }
     }
 
-    const getUserAdmin = async (user) => {
-        console.log(user)
-        let user_admin = await API.user_is_admin(user.id);
-        {console.log(user_admin)}
-        if (user_admin?.id) {
-            setUserAdmin(user_admin);
-        } else {
-            setUserAdmin(null);
-        }
-    }
-
     const getEvent = async () => {
         let events = await API.events();
         if (events && events.status === 200) {
