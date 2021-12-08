@@ -2,7 +2,19 @@ import os
 from datetime import timedelta
 from pathlib import Path
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
+CLOUDINARY = {
+  'cloud_name': 'centaurea',
+  'api_key': '938575553552299',
+  'api_secret': 'ZT0aSmsauK9c9Cp3VBNjNVnTfXM',
+}
+CLOUDINARY_URL=cloudinary://938575553552299:ZT0aSmsauK9c9Cp3VBNjNVnTfXM@centaurea
+export CLOUDINARY_CLOUD_NAME="centaurea"
+export CLOUDINARY_API_KEY="938575553552299"
+export CLOUDINARY_API_SECRET="ZT0aSmsauK9c9Cp3VBNjNVnTfXM"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

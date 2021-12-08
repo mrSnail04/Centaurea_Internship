@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
 
 export const Home = (props) => {
@@ -37,10 +38,12 @@ const Event = ({slug, name, img, event}) => {
 
         <div key={event.id} className="col-lg-4 col-md-6 mt-4">
             <div className="card h-100">
-                <Link to={img}>
-                    {console.log(img)}
-                    <img height="400" className="card-img-top" src={img} alt="pic"/>
-                </Link>
+                <Image ="centaurea" secure=true publicId="halloween_st7r9p" /></Image>
+                {/*<Link to={img}>*/}
+                {/*    {console.log(img)}*/}
+
+                {/*    <img height="400" className="card-img-top" src={img} alt="pic"/>*/}
+                {/*</Link>*/}
                 <div className="card-body text-center">
                     <h5 className="card-title">
                         <Link style={{textDecoration: 'none'}} to={`event/${slug}`}>
