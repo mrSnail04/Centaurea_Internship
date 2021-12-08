@@ -37,3 +37,4 @@ virtualenv-clone==0.5.4
 virtualenvwrapper==4.8.4
 Werkzeug==2.0.1
 yarl==1.6.3
+django-cloudinary-storage==0.2.3
