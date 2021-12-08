@@ -41,9 +41,7 @@ export const App = () => {
 
         if (user?.id) {
             setUser(user);
-            console.log(user);
             let user_admin = await API.user_is_admin(user.id);
-            console.log(user_admin)
             if (user_admin?.id) {
                 setUserAdmin(user_admin);
             } else {

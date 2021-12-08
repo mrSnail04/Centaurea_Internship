@@ -104,7 +104,6 @@ const me = async () => {
     return i.get('/auth/users/me').then(
         async (response) => {
             let user = response.data; // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
-            console.log(user)
             return user;
     }).catch((error) => {
         return <h1>error</h1>;
