@@ -18,9 +18,6 @@ CLOUDINARY_STORAGE = {
   'api_secret': 'ZT0aSmsauK9c9Cp3VBNjNVnTfXM',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-export CLOUDINARY_CLOUD_NAME="centaurea"
-export CLOUDINARY_API_KEY="938575553552299"
-export CLOUDINARY_API_SECRET="ZT0aSmsauK9c9Cp3VBNjNVnTfXM"
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 
