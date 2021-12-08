@@ -12,6 +12,7 @@ dj-database-url==0.5.0
 Django==3.2.9
 django-allauth==0.46.0
 django-bootstrap4==21.1
+django-cloudinary-storage==0.3.0
 django-cors-headers==3.10.0
 django-crispy-forms==1.13.0
 django-rest-framework==0.1.0
