@@ -1,5 +1,7 @@
 from django.db import models
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 class Event(models.Model):
     TYPE_CLASSIC = 'ClassicalConcert'
