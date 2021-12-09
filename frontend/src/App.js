@@ -10,12 +10,14 @@ import {API, setCallbackFor401} from "./api/api";
 import {Registration} from "./containers/Registration";
 import {EventPage} from "./containers/EventPage";
 
+
 const home = "/";
 const login = "/login";
 const registration = "/registration";
 const reset_password = "/reset-password";
 const profile = "/profile";
 const admin = "/admin";
+
 
 export const App = () => {
 

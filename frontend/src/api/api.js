@@ -153,32 +153,6 @@ const event = async (slug) => {
     })
 }
 
-const add_event = async (name, actor, date, slug, qty_ticket, address, type_event, image) => {
-    return i.post('/api/event/add_event/', {
-        name: name,
-        actor: actor,
-        date: date,
-        slug: slug,
-        qty_ticket: qty_ticket,
-        address: address,
-        type_event: "TYPE_OTHER",
-        image: image,
-    }).then(
-        //resolved
-        async (response) => {
-            {console.log(response)}
-            if (response && response.status === 201) {
-                return response
-            } else {
-                console.log("Ошибка")
-            }
-        },
-        //rejected
-        (error) => {
-            return console.log(error);
-        })
-}
-
 export const API = {
     login,
     registration,
@@ -190,5 +164,4 @@ export const API = {
     events,
     event,
     user_is_admin,
-    add_event,
 }
