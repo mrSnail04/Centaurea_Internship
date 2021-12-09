@@ -164,5 +164,4 @@ export const API = {
     events,
     event,
     user_is_admin,
-    add_event,
 }
