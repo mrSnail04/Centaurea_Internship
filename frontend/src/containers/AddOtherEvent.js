@@ -150,7 +150,7 @@ export const AddOtherEvent = () => {
                     </div>
                     <div>
                         <input className="form-control"
-                               type="text" onChange={changeImage}
+                               type="file" onChange={changeImage}
                                placeholder={"Изображение"} value={image}/>
                     </div>
                 </div>
