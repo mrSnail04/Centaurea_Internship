@@ -159,10 +159,10 @@ const add_event = async (name, actor, date, slug, qty_ticket, address, type_even
         actor: actor,
         date: date,
         slug: slug,
-        qty_ticket: qty_ticket;
-        address: address;
-        type_event: "TYPE_OTHER";
-        image: image;
+        qty_ticket: qty_ticket,
+        address: address,
+        type_event: "TYPE_OTHER",
+        image: image,
     }).then(
         //resolved
         async (response) => {
