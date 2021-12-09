@@ -154,7 +154,7 @@ const event = async (slug) => {
 }
 
 const add_event = async (name, actor, date, slug, qty_ticket, address, type_event, image) => {
-    return i.post('/api/add_event/', {
+    return i.post('/api/event/add_event/', {
         name: name,
         actor: actor,
         date: date,
