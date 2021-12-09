@@ -26,7 +26,7 @@ class EventViewSet(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False,
             url_path='add_event', permission_classes=[IsAdminUser])
     def add_event(self, request, *args, **kwargs):
-        data = request.data.get('event')
+        data = request.data.get()
         serializer = EventSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()

@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React, {useEffect, useState} from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-
 import {Layout} from "./hocs/Layout";
 import {Home} from "./containers/Home";
 import {Login} from "./containers/Login";
-import {ResetPassword} from './containers/ResetPassword'
-import {Profile} from './containers/Profile'
+import {ResetPassword} from "./containers/ResetPassword";
+import {Profile} from "./containers/Profile";
 import {API, setCallbackFor401} from "./api/api";
 import {Registration} from "./containers/Registration";
 import {EventPage} from "./containers/EventPage";
@@ -38,7 +36,6 @@ export const App = () => {
 
     const getUser = async () => {
         let user = await API.me();
-
         if (user?.id) {
             setUser(user);
             let user_admin = await API.user_is_admin(user.id);

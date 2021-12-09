@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {API} from "../api/api";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const AddOtherEvent = () => {
 
@@ -63,6 +63,7 @@ export const AddOtherEvent = () => {
 
     const submit = async () => {
         let result = await API.add_event(name, actor, date, slug, qty_ticket, address, type_event, image);
+        console.log(result)
         if (result?.statusText === 'Created') {
             console.log(result.statusText)
         }
@@ -139,7 +140,7 @@ export const AddOtherEvent = () => {
                     </div>
                     <div>
                         <input className="form-control"
-                               type="text" onChange={changeDate}
+                               type="date" onChange={changeDate}
                                placeholder={"Дата"} value={date}/>
                     </div>
                 </div>
