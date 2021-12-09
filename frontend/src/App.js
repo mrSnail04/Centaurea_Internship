@@ -9,11 +9,7 @@ import {Profile} from "./containers/Profile";
 import {API, setCallbackFor401} from "./api/api";
 import {Registration} from "./containers/Registration";
 import {EventPage} from "./containers/EventPage";
-import {AddEventPage} from "./containers/AddEvent";
-import {AddOtherEvent} from "./containers/AddOtherEvent";
-import {AddClassicalconcert} from "./containers/AddClassicalconcert";
-import {AddOpenAir} from "./containers/AddOpenAir";
-import {AddParty} from "./containers/AddParty";
+
 
 const home = "/";
 const login = "/login";
@@ -21,11 +17,7 @@ const registration = "/registration";
 const reset_password = "/reset-password";
 const profile = "/profile";
 const admin = "/admin";
-const add_event = "/add-event";
-const other_event = "/other-event"
-const party = "/party";
-const open_air = "/open-air";
-const classical_concert = "/classical-concert";
+
 
 export const App = () => {
 
@@ -111,16 +103,6 @@ export const App = () => {
                     <Route exact path={profile}
                            component={!user?.id ? () => <Redirect to={login}/> : () =>
                                <Profile getCart={getCart} user={user} cart={cart}/>}/>
-                    <Route exact path="/add-event"
-                           component={!user?.id ? () => <Redirect to={login}/> : () => <AddEventPage/>}/>
-                    <Route exact path={party}
-                           component={!user?.id ? () => <Redirect to={login}/> : () => <AddParty/>}/>
-                    <Route exact path={open_air}
-                           component={!user?.id ? () => <Redirect to={login}/> : () => <AddOpenAir/>}/>
-                    <Route exact path={classical_concert}
-                           component={!user?.id ? () => <Redirect to={login}/> : () => <AddClassicalconcert/>}/>
-                    <Route exact path={other_event}
-                           component={!user?.id ? () => <Redirect to={login}/> : () => <AddOtherEvent/>}/>
                     <Route path="/event/:slug"><EventPage/></Route>
                     <Route path={admin}
                            component={!useradmin?.is_staff? () => <Redirect to={home}/> : () => {
