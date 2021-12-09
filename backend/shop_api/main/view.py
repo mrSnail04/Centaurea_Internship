@@ -24,7 +24,7 @@ class EventViewSet(viewsets.ModelViewSet):
         return response.Response(event_serializer.data)
 
     @action(methods=['post'], detail=False,
-            url_path='add_event', permission_classes=[IsAdminUser])
+            url_path='add_event/', permission_classes=[IsAdminUser])
     def add_event(self, request, *args, **kwargs):
         data = request.data.get()
         serializer = EventSerializer(data=data)
