@@ -40,7 +40,7 @@ WORKDIR /app
 # Be sure to add a real SECRET_KEY config variable in Heroku.
 RUN DJANGO_SETTINGS_MODULE=backend.settings.prod \
     SECRET_KEY=TEST_SECRET_KEY \
-    python3 backend/manage.py collectstatic --noinput
+    python3 backend/manage.py collectstatic --noinput \
     python3 backend/manage.py makemigrations --noinput
 
 
