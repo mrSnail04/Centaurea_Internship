@@ -131,6 +131,7 @@ const getEvent = async (slug) => {
 const Concert = ({concert}) => {
 
     return (
+        {console.log(concert)}
 
     )
 }
