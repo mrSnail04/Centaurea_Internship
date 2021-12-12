@@ -107,6 +107,7 @@ const Concert = ({concert}) => {
                                             Add to wishlist
                                         </button>
                                     </div>
+                                </hr>
                         </div>
                     </div>
                 </div>
