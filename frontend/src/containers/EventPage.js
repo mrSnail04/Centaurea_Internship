@@ -37,51 +37,16 @@ export const EventPage = (props) => {
 
     // const [events, setEvents] = useState(props.events);
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-9">
-                    <div className="row">
-                        {/*{props.compositor ? <div>{props.compositor}</div> : null}*/}
-                        EVENT PAGE
-                        <Concert concert={concert}/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-};
-
-const getEvent = async (slug) => {
-    let result = await API.event(slug);
-    if (result.status === 200) {
-        return result.data[0];
-    } else {
-        console.log('Ошибка')
-    }
-}
-const Concert = ({concert}) => {
-
-    return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             <div className="content-wrapper">
                 <div>
                     <div className="container">
                         <div className="col-md-12">
                             <div className="col-md-3 service-image-left">
                                 <center>
-                                    <img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png"
-                                         alt=""></img>
-                                </center>
-                            </div>
-
-                            <div className="container col-sm-2 col-md-2 pull-left">
-                                <center>
-                                    <a>
-                                        <img
-                                            src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png"
-                                            alt="">
-                                        </img>
-                                    </a>
+                                    <img
+                                        src={"https://res.cloudinary.com/hhp1uohee/"+ concert.img}
+                                        alt=""></img>
                                 </center>
                             </div>
                         </div>
@@ -90,20 +55,11 @@ const Concert = ({concert}) => {
                             <div>The Corsair Gaming Series GS600 is the ideal price/performance
                                 choice for mid-spec gaming PC
                             </div>
-                            <div><i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i> <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i> <i className="fa fa-star-o"></i>
-                            </div>
                             <div>$ 1234.00</div>
                             <div>In Stock</div>
                             <div className="btn-group">
                                 <button type="button" className="btn btn-success">
                                     Add to cart
-                                </button>
-                            </div>
-                            <div className="btn-group">
-                                <button type="button" className="btn btn-danger">
-                                    Add to wishlist
                                 </button>
                             </div>
                         </div>
@@ -161,5 +117,20 @@ const Concert = ({concert}) => {
                 </div>
             </div>
         </div>
+    )
+};
+
+const getEvent = async (slug) => {
+    let result = await API.event(slug);
+    if (result.status === 200) {
+        return result.data[0];
+    } else {
+        console.log('Ошибка')
+    }
+}
+const Concert = ({concert}) => {
+
+    return (
+
     )
 }
