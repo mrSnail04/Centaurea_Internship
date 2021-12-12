@@ -96,7 +96,6 @@ const Concert = ({concert}) => {
                             <hr>
                                 <div>$ 1234.00</div>
                                 <div>In Stock</div>
-                                <hr>
                                     <div className="btn-group">
                                         <button type="button" className="btn btn-success">
                                             Add to cart
@@ -107,7 +106,6 @@ const Concert = ({concert}) => {
                                             Add to wishlist
                                         </button>
                                     </div>
-                                </hr>
                         </div>
                     </div>
                 </div>
