@@ -79,48 +79,45 @@ const Concert = ({concert}) => {
                                     <a>
                                         <img
                                             src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png"
-                                            alt=""></img>
+                                            alt="">
+                                        </img>
                                     </a>
                                 </center>
                             </div>
                         </div>
-
                         <div className="col-md-7">
                             <div>Corsair GS600 600 Watt PSU</div>
                             <div>The Corsair Gaming Series GS600 is the ideal price/performance
                                 choice for mid-spec gaming PC
                             </div>
-                            <div><i className="fa fa-star"></i> <i
-                                className="fa fa-star"></i> <i className="fa fa-star"></i> <i
-                                className="fa fa-star"></i> <i className="fa fa-star-o"></i></div>
-                            <hr>
-                                <div>$ 1234.00</div>
-                                <div>In Stock</div>
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-success">
-                                            Add to cart
-                                        </button>
-                                    </div>
-                                    <div className="btn-group">
-                                        <button type="button" className="btn btn-danger">
-                                            Add to wishlist
-                                        </button>
-                                    </div>
+                            <div><i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i> <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i> <i className="fa fa-star-o"></i>
+                            </div>
+                            <div>$ 1234.00</div>
+                            <div>In Stock</div>
+                            <div className="btn-group">
+                                <button type="button" className="btn btn-success">
+                                    Add to cart
+                                </button>
+                            </div>
+                            <div className="btn-group">
+                                <button type="button" className="btn btn-danger">
+                                    Add to wishlist
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="container-fluid">
                     <div className="col-md-12 product-info">
                         <ul className="nav nav-tabs nav_tabs">
-
                             <li className="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
                             <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li>
                             <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
-
                         </ul>
                         <div className="tab-content">
                             <div className="tab-pane fade in active">
-
                                 <section className="container">
                                     The Corsair Gaming Series GS600 power supply is the ideal price-performance solution
                                     for building or upgrading a Gaming PC. A single +12V rail provides up to 48A of
@@ -129,7 +126,6 @@ const Concert = ({concert}) => {
                                     temperature, so it will never intrude on your music and games. Blue LEDs bathe the
                                     transparent fan blades in a cool glow. Not feeling blue? You can turn off the
                                     lighting with the press of a button.
-
                                     <h3>Corsair Gaming Series GS600 Features:</h3>
                                     <li>It supports the latest ATX12V v2.3 standard and is backward compatible with
                                         ATX12V 2.2 and ATX12V 2.01 systems
@@ -155,20 +151,12 @@ const Concert = ({concert}) => {
                                     <li>MTBF: 100,000 hours</li>
                                     <li>Safety Approvals: UL, CUL, CE, CB, FCC Class B, TÜV, CCC, C-tick</li>
                                 </section>
-
                             </div>
                             <div className="tab-pane fade">
-
-                                <section className="container">
-
-                                </section>
-
+                                <section className="container"></section>
                             </div>
-                            <div className="tab-pane fade">
-
-                            </div>
+                            <div className="tab-pane fade">ТАБ ПАНЕЛЬ</div>
                         </div>
-                        <hr>
                     </div>
                 </div>
             </div>
