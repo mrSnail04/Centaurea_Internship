@@ -128,10 +128,3 @@ const getEvent = async (slug) => {
         console.log('Ошибка')
     }
 }
-const Concert = ({concert}) => {
-
-    return (
-        {console.log(concert)}
-
-    )
-}
