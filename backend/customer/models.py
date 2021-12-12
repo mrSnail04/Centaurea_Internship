@@ -16,6 +16,10 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.id}'
 
+    def save(self, *args, **kwargs):
+        self.price = self.event.price
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'

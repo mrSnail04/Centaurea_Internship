@@ -25,7 +25,8 @@ class Event(models.Model):
     type_event = models.CharField(max_length=100, verbose_name='Тип мероприятия',
                                   choices=TYPE_CHOICES, default=TYPE_OTHER)
     image = CloudinaryField('image')
-    # image = models.ImageField(upload_to='images', verbose_name='Изображение', null=True, blank=True)
+    description = models.CharField(verbose_name='Описание')
+    price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавление мероприятия')
 
     def __str__(self):
