@@ -45,6 +45,7 @@ export const EventPage = (props) => {
                             <div className="col-md-3 service-image-left">
                                 <center>
                                     <img
+                                        height="400"
                                         src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
                                         alt=""></img>
                                     {console.log(concert)}
@@ -52,12 +53,11 @@ export const EventPage = (props) => {
                             </div>
                         </div>
                         <div className="col-md-7">
-                            <div>Corsair GS600 600 Watt PSU</div>
-                            <div>The Corsair Gaming Series GS600 is the ideal price/performance
-                                choice for mid-spec gaming PC
-                            </div>
-                            <div>$ 1234.00</div>
-                            <div>In Stock</div>
+                            <div>{consert.name}</div>
+                            <div>{concert.address}</div>
+                            <div>{concert.actor}</div>
+                            <div>{concert.date}</div>
+                            <div>{concert.qty_ticket}</div>
                             <div className="btn-group">
                                 <button type="button" className="btn btn-success">
                                     Add to cart
