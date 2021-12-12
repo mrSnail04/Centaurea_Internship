@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'cloudinary',
     'cloudinary_storage',
-    'backend.apps.concert',
 ]
 
 MIDDLEWARE = [
