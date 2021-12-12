@@ -41,7 +41,7 @@ WORKDIR /app
 RUN DJANGO_SETTINGS_MODULE=backend.settings.prod \
     SECRET_KEY=TEST_SECRET_KEY \
     python3 backend/manage.py collectstatic --noinput \
-    python3 backend/manage.py makemigrations --noinput
+    python3 backend/manage.py makemigrations
 
 
 EXPOSE $PORT
