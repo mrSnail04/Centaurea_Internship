@@ -53,7 +53,7 @@ export const EventPage = (props) => {
                             </div>
                         </div>
                         <div className="col-md-7">
-                            <div>{consert.name}</div>
+                            <div>{concert.name}</div>
                             <div>{concert.address}</div>
                             <div>{concert.actor}</div>
                             <div>{concert.date}</div>
