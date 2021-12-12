@@ -47,6 +47,7 @@ export const EventPage = (props) => {
                                     <img
                                         src={"https://res.cloudinary.com/hhp1uohee/"+ concert.img}
                                         alt=""></img>
+                                    {console.log(concert)}
                                 </center>
                             </div>
                         </div>
