@@ -146,6 +146,7 @@ const events = async () => {
 }
 
 const event = async (slug) => {
+    console.log(slug)
     return i.get(`api/event/${slug}`).then((response) => {
         return response;
     }).catch((error) => {
