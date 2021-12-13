@@ -64,7 +64,7 @@ export const EventPage = (props) => {
         return <div>Concert not found</div>
     }
 
-    if concer && concert.type_event{
+    if (concert && concert.type_event){
         switch (concert.type_event) {
             case "Party": return <getParty slug={concert.slug} />
                 break;
