@@ -7,7 +7,7 @@ export const EventPage = (props) => {
     const [concert, setConcert] = useState(null);
     const [event, setEvent] = useState(null);
     console.log(event)
-    console.log(concert.type)
+    console.log(concert)
     let {slug} = useParams(); //{slug: 'halloween'}
 
     const getEvent = async (slug) => {
