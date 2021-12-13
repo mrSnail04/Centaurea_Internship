@@ -39,33 +39,27 @@ export const EventPage = (props) => {
 
     // const [events, setEvents] = useState(props.events);
     return (
-        <div className="container-fluid">
-            <div className="content-wrapper">
-                <div>
-                    <div className="container">
-                        <div className="col-md-12">
-                            <div className="col-md-3 service-image-left">
-                                <center>
-                                    <img
-                                        height="400"
-                                        src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
-                                        alt=""></img>
-                                    {console.log(concert)}
-                                </center>
-                            </div>
-                        </div>
-                        <div className="col-md-7">
-                            <div>{concert.name}</div>
-                            <div>{concert.address}</div>
-                            <div>{concert.actor}</div>
-                            <div>{concert.date}</div>
-                            <div>{concert.qty_ticket}</div>
-                            <div className="btn-group">
-                                <button type="button" className="btn btn-success">
-                                    Add to cart
-                                </button>
-                            </div>
-                        </div>
+        <div className="container">
+            <div className="row">
+                <div className="col-sm">
+                    <div className="col-md-3 service-image-left">
+                        <center>
+                            <img
+                                height="400"
+                                src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
+                                alt=""></img>
+                            {console.log(concert)}
+                        </center>
+                    </div>
+                </div>
+                <div className="col-sm">
+                    <h1>{concert.name}</h1>
+                    <hr/>
+                    <span className="badge badge-light">{concert.date}</span>
+                    <div className="btn-group">
+                        <button type="button" className="btn btn-success">
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>
