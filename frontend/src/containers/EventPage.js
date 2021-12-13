@@ -8,6 +8,48 @@ export const EventPage = (props) => {
     const [event, setEvent] = useState(null);
     let {slug} = useParams(); //{slug: 'halloween'}
 
+    const getEvent = async (slug) => {
+        console.log(slug)
+        let result = await API.event(slug);
+        if (result.status === 200) {
+            return result.data[0];
+        } else {
+            console.log('Ошибка')
+        }
+    }
+    const getParty = async (slug) => {
+        console.log(slug)
+        let result = await API.party(slug);
+        if (result.status === 200) {
+            console.log(result)
+            setEvent(result.data[0]);
+            return result.data[0];
+        } else {
+            console.log('Ошибка')
+        }
+    }
+    const getOpenAir = async (slug) => {
+        console.log(slug)
+        let result = await API.openair(slug);
+        if (result.status === 200) {
+            console.log(result)
+            setEvent(result.data[0]);
+            return result.data[0];
+        } else {
+            console.log('Ошибка')
+        }
+    }
+    const getClassicalConcert = async (slug) => {
+        console.log(slug)
+        let result = await API.classicalconcert(slug);
+        if (result.status === 200) {
+            console.log(result)
+            setEvent(result.data[0]);
+            return result.data[0];
+        } else {
+            console.log('Ошибка')
+        }
+    }
     useEffect(() => {
         let currentSlug = slug;
         async function fetchEvent() {
@@ -68,46 +110,3 @@ export const EventPage = (props) => {
         </div>
     )
 };
-
-const getEvent = async (slug) => {
-    console.log(slug)
-    let result = await API.event(slug);
-    if (result.status === 200) {
-        return result.data[0];
-    } else {
-        console.log('Ошибка')
-    }
-}
-const getParty = async (slug) => {
-    console.log(slug)
-    let result = await API.party(slug);
-    if (result.status === 200) {
-        console.log(result)
-        setEvent(result.data[0]);
-        return result.data[0];
-    } else {
-        console.log('Ошибка')
-    }
-}
-const getOpenAir = async (slug) => {
-    console.log(slug)
-    let result = await API.openair(slug);
-    if (result.status === 200) {
-        console.log(result)
-        setEvent(result.data[0]);
-        return result.data[0];
-    } else {
-        console.log('Ошибка')
-    }
-}
-const getClassicalConcert = async (slug) => {
-    console.log(slug)
-    let result = await API.classicalconcert(slug);
-    if (result.status === 200) {
-        console.log(result)
-        setEvent(result.data[0]);
-        return result.data[0];
-    } else {
-        console.log('Ошибка')
-    }
-}
