@@ -5,7 +5,7 @@ import {API} from "../api/api";
 export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
-    const [differentevent, setDifferentEvent] = useState(null);
+    const [event, setEvent] = useState(null);
     let {slug} = useParams(); //{slug: 'halloween'}
 
     useEffect(() => {
@@ -83,7 +83,7 @@ const getParty = async (slug) => {
     let result = await API.party(slug);
     if (result.status === 200) {
         console.log(result)
-        setDifferentEvent(result.data[0]);
+        setEvent(result.data[0]);
         return result.data[0];
     } else {
         console.log('Ошибка')
@@ -94,7 +94,7 @@ const getOpenAir = async (slug) => {
     let result = await API.openair(slug);
     if (result.status === 200) {
         console.log(result)
-        setDifferentEvent(result.data[0]);
+        setEvent(result.data[0]);
         return result.data[0];
     } else {
         console.log('Ошибка')
@@ -105,7 +105,7 @@ const getClassicalConcert = async (slug) => {
     let result = await API.classicalconcert(slug);
     if (result.status === 200) {
         console.log(result)
-        setDifferentEvent(result.data[0]);
+        setEvent(result.data[0]);
         return result.data[0];
     } else {
         console.log('Ошибка')
