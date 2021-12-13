@@ -24,7 +24,6 @@ i.interceptors.request.use(config => {
 });
 
 i.interceptors.response.use(response => {
-        console.log(response)
         return response;
     },
     error => {
@@ -39,7 +38,6 @@ i.interceptors.response.use(response => {
 const login = async (login, password) => {
     return i.post('/auth/token/login', {username: login, password: password})
         .then((response) => {
-            console.log(response)
             if (response?.data?.auth_token) {
                 localStorage.setItem('auth_token', response.data['auth_token']);
                 return response;
@@ -61,7 +59,6 @@ const registration = async (username, password, firstname, lastname, email) => {
     }).then(
         //resolved
         async (response) => {
-            {console.log(response)}
             let data = await login(username, password);
             if (data && data.status === 200) {
                 return response
@@ -77,7 +74,6 @@ const registration = async (username, password, firstname, lastname, email) => {
 
 const logout = async () => {
     return i.get('/api/logout').then((response) => {
-        {console.log(response)}
         localStorage.removeItem('auth_token')
         return notAuthorized();
     }).catch((error) => {
@@ -147,36 +143,28 @@ const events = async () => {
 }
 
 const event = async (slug) => {
-    console.log(slug)
     return i.get(`api/event/${slug}`).then((response) => {
-        console.log(response)
         return response;
     }).catch((error) => {
         return console.log(error);
     })
 }
 const party = async (slug) => {
-    console.log(slug)
     return i.get(`api/party/${slug}`).then((response) => {
-        console.log(response)
         return response;
     }).catch((error) => {
         return console.log(error);
     })
 }
 const classicalconcert = async (slug) => {
-    console.log(slug)
     return i.get(`api/classicalconcert/${slug}`).then((response) => {
-        console.log(response)
         return response;
     }).catch((error) => {
         return console.log(error);
     })
 }
 const openair = async (slug) => {
-    console.log(slug)
     return i.get(`api/openair/${slug}`).then((response) => {
-        console.log(response)
         return response;
     }).catch((error) => {
         return console.log(error);
@@ -194,4 +182,6 @@ export const API = {
     event,
     user_is_admin,
     party,
+    openair,
+    classicalconcert,
 }

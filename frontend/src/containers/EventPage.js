@@ -6,10 +6,10 @@ export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
     const [event, setEvent] = useState(null);
+    console.log(event)
     let {slug} = useParams(); //{slug: 'halloween'}
 
     const getEvent = async (slug) => {
-        console.log(slug)
         let result = await API.event(slug);
         if (result.status === 200) {
             return result.data[0];
@@ -18,10 +18,8 @@ export const EventPage = (props) => {
         }
     }
     const getParty = async (slug) => {
-        console.log(slug)
         let result = await API.party(slug);
         if (result.status === 200) {
-            console.log(result)
             setEvent(result.data[0]);
             return result.data[0];
         } else {
@@ -29,7 +27,6 @@ export const EventPage = (props) => {
         }
     }
     const getOpenAir = async (slug) => {
-        console.log(slug)
         let result = await API.openair(slug);
         if (result.status === 200) {
             console.log(result)
@@ -40,10 +37,8 @@ export const EventPage = (props) => {
         }
     }
     const getClassicalConcert = async (slug) => {
-        console.log(slug)
         let result = await API.classicalconcert(slug);
         if (result.status === 200) {
-            console.log(result)
             setEvent(result.data[0]);
             return result.data[0];
         } else {
@@ -53,10 +48,8 @@ export const EventPage = (props) => {
     useEffect(() => {
         let currentSlug = slug;
         async function fetchEvent() {
-            console.log(currentSlug)
             setLoading(true);
             let result = await getEvent(currentSlug)
-            console.log(result)
             setConcert(result);
             setLoading(false);
         }
