@@ -24,6 +24,7 @@ i.interceptors.request.use(config => {
 });
 
 i.interceptors.response.use(response => {
+        console.log(response)
         return response;
     },
     error => {
@@ -147,7 +148,7 @@ const events = async () => {
 
 const event = async (slug) => {
     console.log(slug)
-    return i.get(`api/event/event/${slug}`).then((response) => {
+    return i.get(`api/event/${slug}`).then((response) => {
         console.log(response)
         return response;
     }).catch((error) => {
