@@ -6,10 +6,9 @@ export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
     const [event, setEvent] = useState(null);
-    console.log(event)
-    console.log(concert)
     let {slug} = useParams(); //{slug: 'halloween'}
-
+    console.log(concert.type_event)
+    console.log(concert)
     const getEvent = async (slug) => {
         let result = await API.event(slug);
         if (result.status === 200) {
@@ -66,7 +65,7 @@ export const EventPage = (props) => {
     }
 
 
-    switch (concert.type) {
+    switch (concert.type_event) {
         case "Party": return <getParty slug={concert.slug} />
             break;
         case "OpenAir": return <getOpenAir slug={concert.slug} />
