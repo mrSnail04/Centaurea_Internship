@@ -74,7 +74,7 @@ export const EventPage = (props) => {
 };
 
 const getEvent = async (slug) => {
-    cnsole.log(slug)
+    console.log(slug)
     let result = await API.event(slug);
     if (result.status === 200) {
         return result.data[0];
