@@ -31,7 +31,6 @@ export const EventPage = (props) => {
 
 
     switch (concert.type) {
-        console.log(concert.type)
         case "Party": return <getParty slug={concert.slug} />
             break;
         case "OpenAir": return <getOpenAir slug={concert.slug} />
