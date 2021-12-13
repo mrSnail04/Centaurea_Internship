@@ -75,6 +75,13 @@ class PartyViewSet(viewsets.ModelViewSet):
         Party_serializer = PartySerializer(Event.objects.all())
         return response.Response(Party_serializer.data)
 
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated],
+            url_path='(?P<slug>.+)')
+    def event(self, *args, **kwargs):
+        event = Party.objects.filter(slug=kwargs["slug"])
+        event_serializer = PartySerializer(event, many=True)
+        return response.Response(event_serializer.data)
+
     @action(methods=['post'], detail=False, permission_classes=[IsAdminUser],
             url_path='event')
     def add_event(self, request, *args, **kwargs):
@@ -127,6 +134,13 @@ class ClassicalConcertViewSet(viewsets.ModelViewSet):
         Classical_serializer = ClassicalConcertSerializer(Event.objects.all())
         return response.Response(Classical_serializer.data)
 
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated],
+            url_path='(?P<slug>.+)')
+    def event(self, *args, **kwargs):
+        event = ClassicalConcert.objects.filter(slug=kwargs["slug"])
+        event_serializer = ClassicalConcertSerializer(event, many=True)
+        return response.Response(event_serializer.data)
+
     @action(methods=['post'], detail=False, permission_classes=[IsAdminUser],
             url_path='add_event')
     def add_event(self, request, *args, **kwargs):
@@ -178,6 +192,13 @@ class OpenAirViewSet(viewsets.ModelViewSet):
     def all_event(self, *args, **kwargs):
         Openair_serializer = OpenAirSerializer(Event.objects.all())
         return response.Response(Openair_serializer.data)
+
+    @action(methods=['get'], detail=False, permission_classes=[IsAuthenticated],
+            url_path='(?P<slug>.+)')
+    def event(self, *args, **kwargs):
+        event = OpenAir.objects.filter(slug=kwargs["slug"])
+        event_serializer = OpenAirSerializer(event, many=True)
+        return response.Response(event_serializer.data)
 
     @action(methods=['post'], detail=False, permission_classes=[IsAdminUser],
             url_path='add_event')

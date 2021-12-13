@@ -5,6 +5,7 @@ import {API} from "../api/api";
 export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
+    const [event, setEvent] = useState(null);
     let {slug} = useParams(); //{slug: 'halloween'}
 
     useEffect(() => {
@@ -29,13 +30,17 @@ export const EventPage = (props) => {
     }
 
 
-    // switch (concert.type) {
-    //     case "concert": return <Concert age={18} compositor={"Mozart"} />
-    //         break;
-    //     case "show": return <Show />
-    //         break;
-    //     default:
-    // }
+    switch (concert.type) {
+        console.log(concert.type)
+        case "Party": return <getParty slug={concert.slug} />
+            break;
+        case "OpenAir": return <getOpenAir slug={concert.slug} />
+            break;
+        case "ClassicalConcert": return <getClassicalConcert slug={concert.slug} />
+            break;
+        case "Other": return <getEvent slug={concert.slug} />
+            break;
+    }
 
     // const [events, setEvents] = useState(props.events);
     return (
@@ -43,13 +48,12 @@ export const EventPage = (props) => {
             <div className="row">
                 <div className="col-sm">
                     <div className="col-md-3 service-image-left">
-                        <center>
+                        <right>
                             <img
                                 height="400"
                                 src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
                                 alt=""></img>
-                            {console.log(concert)}
-                        </center>
+                        </right>
                     </div>
                 </div>
                 <div className="col-sm">
@@ -71,6 +75,39 @@ const getEvent = async (slug) => {
     console.log(slug)
     let result = await API.event(slug);
     if (result.status === 200) {
+        return result.data[0];
+    } else {
+        console.log('Ошибка')
+    }
+}
+const getParty = async (slug) => {
+    console.log(slug)
+    let result = await API.party(slug);
+    if (result.status === 200) {
+        console.log(result)
+        setEvent(result.data[0]);
+        return result.data[0];
+    } else {
+        console.log('Ошибка')
+    }
+}
+const getOpenAir = async (slug) => {
+    console.log(slug)
+    let result = await API.openair(slug);
+    if (result.status === 200) {
+        console.log(result)
+        setEvent(result.data[0]);
+        return result.data[0];
+    } else {
+        console.log('Ошибка')
+    }
+}
+const getClassicalConcert = async (slug) => {
+    console.log(slug)
+    let result = await API.classicalconcert(slug);
+    if (result.status === 200) {
+        console.log(result)
+        setEvent(result.data[0]);
         return result.data[0];
     } else {
         console.log('Ошибка')

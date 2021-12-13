@@ -155,7 +155,33 @@ const event = async (slug) => {
         return console.log(error);
     })
 }
-
+const party = async (slug) => {
+    console.log(slug)
+    return i.get(`api/party/${slug}`).then((response) => {
+        console.log(response)
+        return response;
+    }).catch((error) => {
+        return console.log(error);
+    })
+}
+const classicalconcert = async (slug) => {
+    console.log(slug)
+    return i.get(`api/classicalconcert/${slug}`).then((response) => {
+        console.log(response)
+        return response;
+    }).catch((error) => {
+        return console.log(error);
+    })
+}
+const openair = async (slug) => {
+    console.log(slug)
+    return i.get(`api/openair/${slug}`).then((response) => {
+        console.log(response)
+        return response;
+    }).catch((error) => {
+        return console.log(error);
+    })
+}
 export const API = {
     login,
     registration,
@@ -167,4 +193,5 @@ export const API = {
     events,
     event,
     user_is_admin,
+    party,
 }
