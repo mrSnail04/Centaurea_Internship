@@ -10,8 +10,10 @@ export const EventPage = (props) => {
     useEffect(() => {
         let currentSlug = slug;
         async function fetchEvent() {
+            console.log(currentSlug)
             setLoading(true);
             let result = await getEvent(currentSlug)
+            console.log(result)
             setConcert(result);
             setLoading(false);
         }

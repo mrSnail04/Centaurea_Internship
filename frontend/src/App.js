@@ -45,6 +45,7 @@ export const App = () => {
     const getEvent = async () => {
         let events = await API.events();
         if (events && events.status === 200) {
+            console.log(events.data)
             setEvents(events.data);
         } else {
             setEvents(null);
