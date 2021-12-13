@@ -5,7 +5,7 @@ from backend.settings.base import *
 # follow here for setup: https://dev.to/englishcraig/docker-django-react-building-assets-and-deploying-to-heroku-24jh
 
 SECRET_KEY = "django-insecure-(ygwh-78e-jan!c05qe*5@h#&u#8r+vbaea)ui!#ym9^vm1ji0" # TODO set SECRET_KEY for production
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['ancient-oasis-20487.herokuapp.com'] # TODO add heroku app url or create env var with url
 
 INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
