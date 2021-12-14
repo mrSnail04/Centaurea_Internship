@@ -20,7 +20,7 @@ export const EventPage = (props) => {
     const getParty = async (slug) => {
         let result = await API.party(slug);
         if (result.status === 200) {
-            setEvent(result.data[0]);
+            console.log(result)
             return result.data[0];
         } else {
             console.log('Ошибка')
@@ -46,8 +46,12 @@ export const EventPage = (props) => {
         }
     }
     const getTrueEvent = (result) => {
+        console.log(result)
         switch (result.type_event) {
-            case "Party": return getParty(result.slug)
+            case "Party":
+                let event = getParty(result.slug)
+                console.log(event)
+                return event;
                 break;
             case "OpenAir": return getOpenAir(result.slug)
                 break;
