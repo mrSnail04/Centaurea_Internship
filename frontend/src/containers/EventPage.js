@@ -5,9 +5,7 @@ import {API} from "../api/api";
 export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
-    const [event, setEvent] = useState(null);
     let {slug} = useParams(); //{slug: 'halloween'}
-    console.log(concert)
 
     const getEvent = async (slug) => {
         let result = await API.event(slug);
@@ -30,7 +28,6 @@ export const EventPage = (props) => {
         let result = await API.openair(slug);
         if (result.status === 200) {
             console.log(result)
-            setEvent(result.data[0]);
             return result.data[0];
         } else {
             console.log('Ошибка')
@@ -39,7 +36,6 @@ export const EventPage = (props) => {
     const getClassicalConcert = async (slug) => {
         let result = await API.classicalconcert(slug);
         if (result.status === 200) {
-            setEvent(result.data[0]);
             return result.data[0];
         } else {
             console.log('Ошибка')
@@ -53,11 +49,20 @@ export const EventPage = (props) => {
                 console.log(conc)
                 return conc;
                 break;
-            case "OpenAir": return getOpenAir(result.slug)
+            case "OpenAir":
+                let conc = await getOpenAir(result.slug)
+                console.log(conc)
+                return conc;
                 break;
-            case "ClassicalConcert": return getClassicalConcert(result.slug)
+            case "ClassicalConcert":
+                let conc = await getClassicalConcert(result.slug)
+                console.log(conc)
+                return conc;
                 break;
-            case "Other": return getEvent(result.slug)
+            case "Other":
+                let conc = await getEvent(result.slug)
+                console.log(conc)
+                return conc;
                 break;
         }
     }
@@ -68,10 +73,8 @@ export const EventPage = (props) => {
             let result = await getEvent(currentSlug)
             console.log(result)
             let additionEventProp = await getTrueEvent(result);
-            console.log(additionEventProp)
-            let concert = {...result, ...additionEventProp}
-            console.log(concert)
-            setConcert(concert);
+            console.log(additionEventProp.data[0])
+            setConcert(additionEventProp.data[0]);
             setLoading(false);
 
         }
@@ -85,8 +88,6 @@ export const EventPage = (props) => {
     if (!concert) {
         return <div>Concert not found</div>
     }
-
-
 
     return (
         <div className="container">
