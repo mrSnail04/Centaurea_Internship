@@ -74,7 +74,7 @@ export const EventPage = (props) => {
             console.log(result)
             let additionEventProp = await getTrueEvent(result);
             console.log(additionEventProp)
-            setConcert(additionEventProp.data[0]);
+            setConcert(additionEventProp);
             setLoading(false);
 
         }
