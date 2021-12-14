@@ -45,6 +45,18 @@ export const EventPage = (props) => {
             console.log('Ошибка')
         }
     }
+    const getTrueEvent = async (concert) => {
+        switch (concert.type_event) {
+            case "Party": return getParty(concert.slug)
+                break;
+            case "OpenAir": return getOpenAir(concert.slug)
+                break;
+            case "ClassicalConcert": return getClassicalConcert (concert.slug)
+                break;
+            case "Other": return getEvent(concert.slug)
+                break;
+        }
+    }
     useEffect(() => {
         let currentSlug = slug;
         async function fetchEvent() {
@@ -68,18 +80,7 @@ export const EventPage = (props) => {
     if (!concert) {
         return <div>Concert not found</div>
     }
-    const getTrueEvent = async (concert) => {
-        switch (concert.type_event) {
-            case "Party": return <getParty slug={concert.slug} />
-                break;
-            case "OpenAir": return <getOpenAir slug={concert.slug} />
-                break;
-            case "ClassicalConcert": return <getClassicalConcert slug={concert.slug} />
-                break;
-            case "Other": return <getEvent slug={concert.slug} />
-                break;
-        }
-    }
+
 
 
     return (
