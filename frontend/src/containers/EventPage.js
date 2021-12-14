@@ -52,10 +52,8 @@ export const EventPage = (props) => {
             let result = await getEvent(currentSlug)
             setConcert(result);
             setLoading(false);
-            if (concert && concert.type_event){
-                await getTrueEvent(concert);
-                console.log(concert);
-            }
+            await getTrueEvent(concert);
+            console.log(concert);
 
         }
         fetchEvent();
