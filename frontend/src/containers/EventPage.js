@@ -52,6 +52,7 @@ export const EventPage = (props) => {
             let result = await getEvent(currentSlug)
             console.log(result)
             setConcert(result);
+            console.log(concert);
             setLoading(false);
             await getTrueEvent(concert);
             console.log(concert);
