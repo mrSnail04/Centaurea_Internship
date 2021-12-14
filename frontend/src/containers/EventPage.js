@@ -1,6 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {API} from "../api/api";
+
 
 export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
@@ -18,7 +20,6 @@ export const EventPage = (props) => {
     const getParty = async (slug) => {
         let result = await API.party(slug);
         if (result.status === 200) {
-            console.log(result)
             return result.data[0];
         } else {
             console.log('Ошибка')
@@ -27,7 +28,6 @@ export const EventPage = (props) => {
     const getOpenAir = async (slug) => {
         let result = await API.openair(slug);
         if (result.status === 200) {
-            console.log(result)
             return result.data[0];
         } else {
             console.log('Ошибка')
@@ -42,26 +42,21 @@ export const EventPage = (props) => {
         }
     }
     const getTrueEvent = async (result) => {
-        console.log(result)
         switch (result.type_event) {
             case "Party":
                 let concParty = await getParty(result.slug)
-                console.log(concParty)
                 return concParty;
                 break;
             case "OpenAir":
                 let concOpenAir = await getOpenAir(result.slug)
-                console.log(concOpenAir)
                 return concOpenAir;
                 break;
             case "ClassicalConcert":
                 let concClassical = await getClassicalConcert(result.slug)
-                console.log(concClassical)
                 return concClassical;
                 break;
             case "Other":
                 let concOther = await getEvent(result.slug)
-                console.log(concOther)
                 return concOther;
                 break;
         }
@@ -71,9 +66,7 @@ export const EventPage = (props) => {
         async function fetchEvent() {
             setLoading(true);
             let result = await getEvent(currentSlug)
-            console.log(result)
             let additionEventProp = await getTrueEvent(result);
-            console.log(additionEventProp)
             setConcert(additionEventProp);
             setLoading(false);
 
