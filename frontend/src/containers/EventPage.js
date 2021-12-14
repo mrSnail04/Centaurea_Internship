@@ -54,6 +54,7 @@ export const EventPage = (props) => {
             setLoading(false);
             if (concert && concert.type_event){
                 await getTrueEvent(concert);
+                console.log(concert);
             }
 
         }
