@@ -95,10 +95,10 @@ export const EventPage = (props) => {
                         </right>
                     </div>
                 </div>
-                <div className="col-sm">
+                <iv className="col-sm">
                     <h1>{concert.name}</h1>
                     <hr/>
-                    <span className="badge badge-light">{concert.date}</span>
+                    <h4><span className="badge badge-light">{concert.date}</span><h4>
                     <div className="btn-group">
                         <button type="button" className="btn btn-success">
                             Add to cart
