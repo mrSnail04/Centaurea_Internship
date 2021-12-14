@@ -46,7 +46,7 @@ export const EventPage = (props) => {
         }
     }
     const getTrueEvent = (result) => {
-        switch (concert.type_event) {
+        switch (result.type_event) {
             case "Party": return getParty(result.slug)
                 break;
             case "OpenAir": return getOpenAir(result.slug)
