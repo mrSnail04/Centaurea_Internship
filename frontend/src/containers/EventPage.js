@@ -70,6 +70,7 @@ export const EventPage = (props) => {
             let additionEventProp = await getTrueEvent(result);
             console.log(additionEventProp)
             let concert = {...result, ...additionEventProp}
+            console.log(concert)
             setConcert(concert);
             setLoading(false);
 
