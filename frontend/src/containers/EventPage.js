@@ -50,6 +50,7 @@ export const EventPage = (props) => {
         async function fetchEvent() {
             setLoading(true);
             let result = await getEvent(currentSlug)
+            console.log(result)
             setConcert(result);
             setLoading(false);
             await getTrueEvent(concert);
