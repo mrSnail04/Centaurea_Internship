@@ -73,7 +73,7 @@ export const EventPage = (props) => {
             let result = await getEvent(currentSlug)
             console.log(result)
             let additionEventProp = await getTrueEvent(result);
-            console.log(additionEventProp.data[0])
+            console.log(additionEventProp)
             setConcert(additionEventProp.data[0]);
             setLoading(false);
 
