@@ -45,15 +45,15 @@ export const EventPage = (props) => {
             console.log('Ошибка')
         }
     }
-    const getTrueEvent = (concert) => {
+    const getTrueEvent = (result) => {
         switch (concert.type_event) {
-            case "Party": return getParty(concert.slug)
+            case "Party": return getParty(result.slug)
                 break;
-            case "OpenAir": return getOpenAir(concert.slug)
+            case "OpenAir": return getOpenAir(result.slug)
                 break;
-            case "ClassicalConcert": return getClassicalConcert(concert.slug)
+            case "ClassicalConcert": return getClassicalConcert(result.slug)
                 break;
-            case "Other": return getEvent(concert.slug)
+            case "Other": return getEvent(result.slug)
                 break;
         }
     }
@@ -63,11 +63,11 @@ export const EventPage = (props) => {
             setLoading(true);
             let result = await getEvent(currentSlug)
             console.log(result)
-            setConcert(result);
-            console.log(concert);
+            let additionEventProp = getTrueEvent(result);
+            console.log(additionEventProp)
+            let concert = {...result, ...additionEventProp}
+            setConcert(concert);
             setLoading(false);
-            getTrueEvent(concert);
-            console.log(concert);
 
         }
         fetchEvent();
