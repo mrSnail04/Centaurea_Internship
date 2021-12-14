@@ -95,7 +95,7 @@ export const EventPage = (props) => {
                         </right>
                     </div>
                 </div>
-                <iv className="col-sm">
+                <div className="col-sm">
                     <h1>{concert.name}</h1>
                     <hr/>
                     <h4><span className="badge badge-light">{concert.date}</span></h4>
