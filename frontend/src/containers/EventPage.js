@@ -45,24 +45,24 @@ export const EventPage = (props) => {
         console.log(result)
         switch (result.type_event) {
             case "Party":
-                let conc = await getParty(result.slug)
-                console.log(conc)
-                return conc;
+                let concParty = await getParty(result.slug)
+                console.log(concParty)
+                return concParty;
                 break;
             case "OpenAir":
-                let conc = await getOpenAir(result.slug)
-                console.log(conc)
-                return conc;
+                let concOpenAir = await getOpenAir(result.slug)
+                console.log(concOpenAir)
+                return concOpenAir;
                 break;
             case "ClassicalConcert":
-                let conc = await getClassicalConcert(result.slug)
-                console.log(conc)
-                return conc;
+                let concClassical = await getClassicalConcert(result.slug)
+                console.log(concClassical)
+                return concClassical;
                 break;
             case "Other":
-                let conc = await getEvent(result.slug)
-                console.log(conc)
-                return conc;
+                let concOther = await getEvent(result.slug)
+                console.log(concOther)
+                return concOther;
                 break;
         }
     }
