@@ -7,8 +7,15 @@ import {API} from "../api/api";
 export const EventPage = (props) => {
     const [loading, setLoading] = useState(false);
     const [concert, setConcert] = useState(null);
+    const [count, setCount] = useState(1);
     let {slug} = useParams(); //{slug: 'halloween'}
 
+    const increase = async (count) => {
+        setCount(count + 1);
+    }
+    const decrease = async (count) => {
+        setCount(count - 1);
+    }
     const getEvent = async (slug) => {
         let result = await API.event(slug);
         if (result.status === 200) {
