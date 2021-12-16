@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
 import React, {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {API} from "../api/api";
@@ -97,13 +98,35 @@ export const EventPage = (props) => {
                 </div>
                 <div className="col-sm">
                     <h1>{concert.name}</h1>
+                    <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
-                    <h4><span className="label label-default">{concert.date}</span></h4>
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-success">
-                            Add to cart
-                        </button>
-                    </div>
+                    <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
+                    <h5 className='text-center'>Адрес: {concert.address}</h5>
+                    <h5 className='text-center'>Описание: {concert.description}</h5>
+                    <hr/>
+                    <table className="table">
+                        <thead>
+                                <th scope="col" >
+                                    <span style={{display: 'flex', justifyContent: 'flex-start'}}>Цена</span>
+                                </th>
+                                <th scope="col" >
+                                    <span style={{display: 'flex', justifyContent: 'center'}}>Количество</span>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <td>{concert.price}</td>
+                                <td>
+                                    <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                                    <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
+                                    <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                                </td>
+                                <td>
+                                    <button type="button" className="btn btn-success">
+                                        Add to cart
+                                    </button>
+                                </td>
+                            </tbody>
+                    </table>
                 </div>
             </div>
         </div>
