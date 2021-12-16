@@ -12,6 +12,7 @@ export const EventPage = (props) => {
 
     const increase = async (count) => {
         let newcount = count + 1
+        console.log(count)
         console.log(newcount)
         setCount(newcount);
     }
