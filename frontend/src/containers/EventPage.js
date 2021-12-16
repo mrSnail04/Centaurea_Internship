@@ -11,8 +11,8 @@ export const EventPage = (props) => {
     let {slug} = useParams(); //{slug: 'halloween'}
 
     const increase = async (count) => {
-        let newcount = count + 1
-        console.log(count)
+        let newcount = {count} + 1
+        console.log({count})
         console.log(newcount)
         setCount(newcount);
     }
