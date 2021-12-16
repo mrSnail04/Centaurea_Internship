@@ -11,10 +11,14 @@ export const EventPage = (props) => {
     let {slug} = useParams(); //{slug: 'halloween'}
 
     const increase = async (count) => {
-        setCount(count + 1);
+        let newcount = count + 1
+        concole.log(newcount)
+        setCount(newcount);
     }
     const decrease = async (count) => {
-        setCount(count - 1);
+        let newcount = count - 1
+        console.log(newcount)
+        setCount(newcount);
     }
     const getEvent = async (slug) => {
         let result = await API.event(slug);
@@ -108,30 +112,30 @@ export const EventPage = (props) => {
                     <hr/>
                     <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
                     <h5 className='text-center'>Адрес: {concert.address}</h5>
-                    <h5 className='text-center'>Описание: {concert.description}</h5>
+                    <h5 className='text-left'>Описание: {concert.description}</h5>
                     <hr/>
                     <table className="table">
                         <thead>
-                                <th scope="col" >
-                                    <span style={{display: 'flex', justifyContent: 'flex-start'}}>Цена</span>
-                                </th>
-                                <th scope="col" >
-                                    <span style={{display: 'flex', justifyContent: 'center'}}>Количество</span>
-                                </th>
-                            </thead>
-                            <tbody>
-                                <td>{concert.price}</td>
-                                <td>
-                                    <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
-                                    <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
-                                    <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
-                                </td>
-                                <td>
-                                    <button type="button" className="btn btn-success">
-                                        Add to cart
-                                    </button>
-                                </td>
-                            </tbody>
+                            <th scope="col" >
+                                <span style={{display: 'flex', justifyContent: 'flex-start'}}>Цена</span>
+                            </th>
+                            <th scope="col" >
+                                <span style={{display: 'flex', justifyContent: 'center'}}>Количество</span>
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>{concert.price}</td>
+                            <td>
+                                <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                                <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
+                                <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                            </td>
+                            <td>
+                                <button type="button" className="btn btn-success">
+                                    Add to cart
+                                </button>
+                            </td>
+                        </tbody>
                     </table>
                 </div>
             </div>
