@@ -10,13 +10,13 @@ export const EventPage = (props) => {
     const [count, setCount] = useState(1);
     let {slug} = useParams(); //{slug: 'halloween'}
 
-    const increase = ({count}) => {
+    const increase = () => {
         let newcount = {count} + 1
         console.log({count})
         console.log(newcount)
         setCount(newcount);
     }
-    const decrease = ({count}) => {
+    const decrease = () => {
         let newcount = count - 1
         console.log(newcount)
         setCount(newcount);
