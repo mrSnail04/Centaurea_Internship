@@ -12,12 +12,16 @@ export const EventPage = (props) => {
 
     const increase = async (count) => {
         let newcount = count + 1
-        concole.log(newcount)
+        {
+            concole.log(newcount)
+        }
         setCount(newcount);
     }
     const decrease = async (count) => {
         let newcount = count - 1
-        console.log(newcount)
+        {
+            console.log(newcount)
+        }
         setCount(newcount);
     }
     const getEvent = async (slug) => {
