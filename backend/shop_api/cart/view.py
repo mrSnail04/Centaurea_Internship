@@ -58,9 +58,11 @@ class CartViewSet(viewsets.ModelViewSet):
         cart.save()
         return response.Response(cart_serializer.data)
 
-    @action(methods=['PATCH'], detail=False, url_path='current_customer_cart/add_to_cart/(?P<event_id>\d+)')
+    @action(methods=['PATCH'], detail=False,
+            url_path='current_customer_cart/add_to_cart/(?P<event_id>\d+)')
     def product_add_to_cart(self, *args, **kwargs):
-        return {'detail':kwargs['event_id']}
+        num = kwargs['event_id']
+        return {'detail': num}
         # if self.get_cart(self.request.user) is None:
         #     CartViewSet.add_cart(self.request.user)
         # cart = self.get_cart(self.request.user)
