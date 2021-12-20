@@ -130,18 +130,21 @@ export const EventPage = (props) => {
                             </th>
                         </thead>
                         <tbody>
-                            <td>{concert.price}</td>
-                            <td>
-                                <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
-                                <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
-                                <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
-                            </td>
-                            <td>
-                                <button style={{display: 'flex', justifyContent: 'flex-end'}}
-                                        type="button" className="btn btn-success" onClick={submit}>
-                                    Добавить в корзину
-                                </button>
-                            </td>
+                            <tr>
+                                <td>{concert.price}</td>
+                                <td>
+                                    <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                                    <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
+                                    <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                                </td>
+                                <td>
+                                    <button style={{display: 'flex', justifyContent: 'flex-end'}}
+                                            type="button" className="btn btn-success" onClick={submit}>
+                                        Добавить в корзину
+                                    </button>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
