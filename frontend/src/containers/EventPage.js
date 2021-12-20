@@ -73,7 +73,7 @@ export const EventPage = (props) => {
 
     const submit = async () => {
         let event = await getEvent(slug);
-        console.log(event)
+        console.log(event.id)
         let result = await API.productAddToCart(event.id);
         console.log(result)
     }
