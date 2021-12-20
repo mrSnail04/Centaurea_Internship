@@ -66,15 +66,16 @@ class CartViewSet(viewsets.ModelViewSet):
             CartViewSet.add_cart(self.request.user)
         cart = self.get_cart(self.request.user)
         event = self.get_event(id)
-        product, created = self._get_or_create_product(event)
-        if created:
-            cart_product, created = self._get_or_create_cart_product(self.request.user, cart, product)
-            if created:
-                cart.products.add(cart_product)
-                cart.save()
-                return response.Response({"detail": 'Товар добавлен в корзину'})
-            return response.Response({"detail": 'Товар уже в корзине'}, status=status.HTTP_400_BAD_REQUEST)
-        return response.Response({"detail":'Товар не найден'}, status=status.HTTP_400_BAD_REQUEST )
+        return response.Response(event)
+        # product, created = self._get_or_create_product(event)
+        # if created:
+        #     cart_product, created = self._get_or_create_cart_product(self.request.user, cart, product)
+        #     if created:
+        #         cart.products.add(cart_product)
+        #         cart.save()
+        #         return response.Response({"detail": 'Товар добавлен в корзину'})
+        #     return response.Response({"detail": 'Товар уже в корзине'}, status=status.HTTP_400_BAD_REQUEST)
+        # return response.Response({"detail":'Товар не найден'}, status=status.HTTP_400_BAD_REQUEST )
 
     @action(methods=['PATCH'], detail=False,
             url_path='current_customer_cart/change_qty/(?P<qty>\d+)/(?P<cart_product_id>\d+)')
