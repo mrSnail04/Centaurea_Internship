@@ -42,7 +42,7 @@ class CartViewSet(viewsets.ModelViewSet):
     @staticmethod
     def _get_or_create_product(event: Event):
         product, created = Product.objects.get_or_create(
-            title = event.title,
+            title = event.name,
             slug = event.slug,
             price = event.price,
             event_id = event.id,
@@ -66,7 +66,7 @@ class CartViewSet(viewsets.ModelViewSet):
             CartViewSet.add_cart(self.request.user)
         cart = self.get_cart(self.request.user)
         event = self.get_event(id)
-        return response.Response(event)
+        return response.Response({"detail": event.name})
         # product, created = self._get_or_create_product(event)
         # if created:
         #     cart_product, created = self._get_or_create_cart_product(self.request.user, cart, product)
