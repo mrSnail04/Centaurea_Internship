@@ -117,7 +117,7 @@ export const EventPage = (props) => {
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
                     <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
-                    <h5 className='text-center'>Адрес: </h5><p>{concert.address}</p>
+                    <h5 className='text-center'>Адрес: </h5><p className='text-center'>{concert.address}</p>
                     <h5 className='text-left'>Описание: </h5><p>{concert.description}</p>
                     <hr/>
                     <table className="table">
@@ -137,7 +137,8 @@ export const EventPage = (props) => {
                                 <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
                             </td>
                             <td>
-                                <button type="button" className="btn btn-success" onClick={submit}>
+                                <button style={{display: 'flex', justifyContent: 'flex-end'}}
+                                        type="button" className="btn btn-success" onClick={submit}>
                                     Добавить в корзину
                                 </button>
                             </td>
