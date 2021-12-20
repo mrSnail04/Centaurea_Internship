@@ -12,12 +12,10 @@ export const EventPage = (props) => {
 
     const increase = () => {
         let newcount = count + 1
-        console.log("count, newcount:", count, newcount)
         setCount(newcount);
     }
     const decrease = () => {
         let newcount = count - 1
-        console.log(newcount)
         setCount(newcount);
     }
     const getEvent = async (slug) => {
@@ -72,6 +70,14 @@ export const EventPage = (props) => {
                 break;
         }
     }
+
+    const submit = async () => {
+        let event = await getEvent(slug);
+        console.log(event)
+        let result = await API.productAddToCart(event.id);
+        console.log(result)
+    }
+
     useEffect(() => {
         let currentSlug = slug;
         async function fetchEvent() {
@@ -111,8 +117,8 @@ export const EventPage = (props) => {
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
                     <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
-                    <h5 className='text-center'>Адрес: {concert.address}</h5>
-                    <h5 className='text-left'>Описание: {concert.description}</h5>
+                    <h5 className='text-center'>Адрес: </h5><p>{concert.address}</p>
+                    <h5 className='text-left'>Описание: </h5><p>{concert.description}</p>
                     <hr/>
                     <table className="table">
                         <thead>
@@ -131,7 +137,7 @@ export const EventPage = (props) => {
                                 <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
                             </td>
                             <td>
-                                <button type="button" className="btn btn-success">
+                                <button type="button" className="btn btn-success" onClick={submit}>
                                     Add to cart
                                 </button>
                             </td>
