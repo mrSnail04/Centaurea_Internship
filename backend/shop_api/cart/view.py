@@ -63,7 +63,7 @@ class CartViewSet(viewsets.ModelViewSet):
         if self.get_cart(self.request.user) is None:
             CartViewSet.add_cart(self.request.user)
         cart = self.get_cart(self.request.user)
-        event = self.get_event(kwargs['event_id'])
+        event = self.get_event(int(kwargs['event_id']))
         product, created = self._get_or_create_product(event)
         if created:
             cart_product, created = self._get_or_create_cart_product(self.request.user, cart, product)

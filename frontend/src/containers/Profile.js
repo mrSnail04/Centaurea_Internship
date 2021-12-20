@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {API} from "../api/api";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {API} from "../api/api";
+
 
 
 export const Profile = (props) => {

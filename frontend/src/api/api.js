@@ -116,12 +116,12 @@ const cartUser = async () => {
 
 const productAddToCart = async (event_id) => {
     return {event_id}
-    // return i.put(`/api/cart/current_customer_cart/add_to_cart/${event_id}`).then((response) => {
-    //     console.log(response)
-    // }).catch((error) => {
-    //     console.log(error);
-    //     return <h1>error</h1>;
-    // })
+    return i.put(`/api/cart/current_customer_cart/add_to_cart/${event_id}`).then((response) => {
+        console.log(response)
+    }).catch((error) => {
+        console.log(error);
+        return <h1>error</h1>;
+    })
 }
 
 const changeQty = async (count, product) => {

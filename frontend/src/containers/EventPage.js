@@ -138,7 +138,7 @@ export const EventPage = (props) => {
                             </td>
                             <td>
                                 <button type="button" className="btn btn-success" onClick={submit}>
-                                    Add to cart
+                                    Добавить в корзину
                                 </button>
                             </td>
                         </tbody>
