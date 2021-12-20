@@ -62,7 +62,7 @@ class CartViewSet(viewsets.ModelViewSet):
             url_path='current_customer_cart/add_to_cart/(?P<event_id>\d+)')
     def product_add_to_cart(self, *args, **kwargs):
         id = int(kwargs['event_id'])
-        return {'detail': num}
+        return response.Response({'detail': id})
         # if self.get_cart(self.request.user) is None:
         #     CartViewSet.add_cart(self.request.user)
         # cart = self.get_cart(self.request.user)
