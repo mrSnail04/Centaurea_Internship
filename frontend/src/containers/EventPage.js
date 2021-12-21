@@ -100,7 +100,7 @@ export const EventPage = (props) => {
     }
 
     const AgeLimit = () => (
-        <h1><span className="badge bg-warning text-dark">{concert.age_limit}</span></h1>
+        <h3><span className="badge bg-warning text-dark">{concert.age_limit}</span></h3>
     )
     return (
         <div className="container">
@@ -114,8 +114,7 @@ export const EventPage = (props) => {
                 </div>
                 <div className="col-sm">
                     <div>
-                        <h1>{concert.name}</h1>
-                        {concert.type_event == "Party"? <AgeLimit/>: null }
+                        <h1>{concert.name}</h1>{concert.type_event == "Party"? <AgeLimit/>: null }
                     </div>
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
