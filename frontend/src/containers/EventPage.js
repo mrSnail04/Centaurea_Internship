@@ -103,13 +103,12 @@ export const EventPage = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col-sm">
-                    <div className="col-md-3 service-image-left">
-                        <right>
-                            <img
-                                height="400"
-                                src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
-                                alt=""></img>
-                        </right>
+                    <div className="col-md-3 text-right">
+                        <img
+                            height="400"
+                            src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
+                            alt="">
+                        </img>
                     </div>
                 </div>
                 <div className="col-sm">
@@ -117,26 +116,15 @@ export const EventPage = (props) => {
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
                     <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
-                    <h5 className='text-center'>Адрес: </h5><p className='text-center'>{concert.address}</p>
-                    <h5 className='text-left'>Описание: </h5><p>{concert.description}</p>
+                    <h5 className='text-center'>Адрес</h5><p className='text-center'>{concert.address}</p>
+                    <h5 className='text-left'>Описание </h5>
+                    <p>{concert.description}</p>
                     <hr/>
-                    <table className="table">
-                        <thead>
-                            <th scope="col" >
-                                <span style={{display: 'flex', justifyContent: 'flex-start'}}>Цена</span>
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{concert.price}</td>
-                                <td>
-                                    <button type="button" className="btn btn-success" onClick={submit}>
-                                        Добавить в корзину
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h5 className='text-left'>Цена</h5>
+                    <p>{concert.price}</p>
+                    <button type="button" className="btn btn-success" onClick={submit}>
+                        Добавить в корзину
+                    </button>
                 </div>
             </div>
         </div>
