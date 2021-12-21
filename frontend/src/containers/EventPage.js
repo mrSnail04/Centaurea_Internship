@@ -115,7 +115,7 @@ export const EventPage = (props) => {
                 <div className="col-sm">
                     <div>
                         <h1>{concert.name}</h1>
-                        {concert.type_event == "Party" <AgeLimit/> : null}
+                        {concert.type_event == "Party"? <AgeLimit/>: null }
                     </div>
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
