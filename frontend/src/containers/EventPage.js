@@ -102,8 +102,8 @@ export const EventPage = (props) => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-sm">
-                    <div className="col-md-3 text-right">
+                <div className="col-sm text-right">
+                    <div className="col-md-3 ">
                         <img
                             height="400"
                             src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
