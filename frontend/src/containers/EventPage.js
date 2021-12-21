@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {API} from "../api/api";
 
 
@@ -99,19 +99,24 @@ export const EventPage = (props) => {
         return <div>Concert not found</div>
     }
 
+    const AdminLink = () => (
+        <span className="badge badge-warning">{concert.age_limit}</span>
+    )
     return (
         <div className="container">
             <div className="row">
                 <div className="col-auto text-right">
                     <img
-                        class="rounded float-right"
                         height="400"
                         src={"https://res.cloudinary.com/hhp1uohee/"+ concert.image}
                         alt="{concert.name}">
                     </img>
                 </div>
                 <div className="col-sm">
-                    <h1>{concert.name}</h1>
+                    <div>
+                        <h1>{concert.name}</h1>
+                        {concert.type_event == "Party" <AgeLimit/> : null}
+                    </div>
                     <h6><span className="label label-default">{concert.date}</span></h6>
                     <hr/>
                     <h5 className='text-center'>Исполнитель: {concert.actor}</h5>
@@ -120,7 +125,7 @@ export const EventPage = (props) => {
                     <p>{concert.description}</p>
                     <hr/>
                     <h5 className='text-left'>Цена</h5>
-                    <p>{concert.price}</p>
+                    <p>{concert.price} руб.</p>
                     <button type="button" className="btn btn-success" onClick={submit}>
                         Добавить в корзину
                     </button>
