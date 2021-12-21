@@ -102,7 +102,7 @@ export const EventPage = (props) => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-sm">
+                <div className="col-sm text-right">
                     <img
                         class="rounded float-right"
                         height="400"
