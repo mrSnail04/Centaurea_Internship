@@ -100,7 +100,7 @@ export const EventPage = (props) => {
     }
 
     const AgeLimit = () => (
-        <h1><span className="badge badge-warning">{concert.age_limit}</span></h1>
+        <h1><span className="badge bg-warning text-dark">{concert.age_limit}</span></h1>
     )
     return (
         <div className="container">
