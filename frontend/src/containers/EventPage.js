@@ -99,7 +99,7 @@ export const EventPage = (props) => {
         return <div>Concert not found</div>
     }
 
-    const AdminLink = () => (
+    const AgeLimit = () => (
         <span className="badge badge-warning">{concert.age_limit}</span>
     )
     return (
