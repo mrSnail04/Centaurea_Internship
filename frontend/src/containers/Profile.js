@@ -1,10 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {API} from "../api/api";
 
 
 
 export const Profile = (props) => {
+    useEffect(() => {
+        function fetchData() {
+            props.getCart();
+        }
+        if (localStorage.getItem("auth_token")) {
+            fetchData();
+        } else {
+            console.log(setUser);
+            setUser(null);
+            console.log(setUser);
+        }
+    }, []);
 
     return (
         <div className="container">

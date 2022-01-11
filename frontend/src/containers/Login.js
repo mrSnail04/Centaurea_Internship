@@ -8,7 +8,6 @@ export const Login = (props) => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-
     const changeLogin = (e) => {
         let newLogin = e.currentTarget.value;
         //validation
@@ -25,6 +24,7 @@ export const Login = (props) => {
         let result = await API.login(login, password);
         if (result.data && result.data['auth_token']) {
             props.getUser();
+            props.getEvent();
         }
     }
 
