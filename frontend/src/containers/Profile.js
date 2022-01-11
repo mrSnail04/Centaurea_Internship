@@ -8,6 +8,7 @@ export const Profile = (props) => {
     useEffect(() => {
         function fetchData() {
             props.getCart();
+
         }
     }, []);
 

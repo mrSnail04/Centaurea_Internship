@@ -56,6 +56,7 @@ export const App = () => {
         let cart = await API.cartUser();
         if (cart?.id) {
             setCart(cart)
+            console.log(cart)
         } else {
             setCart(null);
         }
