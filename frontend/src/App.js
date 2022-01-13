@@ -109,7 +109,7 @@ export const App = () => {
                     <Route exact path={profile}
                            component={!user?.id ? () => <Redirect to={login}/> : () =>
                                <Profile getCart={getCart} user={user} cart={cart}/>}/>
-                    <Route path="/event/:slug"><EventPage events={events}/></Route>
+                    <Route path="/event/:slug"><EventPage events={events} getCart={getCart}/></Route>
                     <Route path={admin}
                            component={!useradmin?.is_staff? () => <Redirect to={home}/> : () => {
                                window.location.href = 'https://ancient-oasis-20487.herokuapp.com/admin';
