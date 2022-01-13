@@ -96,7 +96,11 @@ export const App = () => {
                     <Route exact path={home}
                            component={!user?.id ? () => <Redirect to={login}/> : () => <Home events={events}/>}/>
                     <Route exact path={login}
-                           component={user?.id ? () => <Redirect to={home}/> : () => <Login getUser={getUser} getEvent={getEvent}/>}/>
+                           component={user?.id ? () => <Redirect to={home}/> : () => <Login
+                               getUser={getUser}
+                               getEvent={getEvent}
+                               getCart={getCart}
+                           />}/>
                     <Route exact path={registration}
                            component={user?.id ? () => <Redirect to={home}/> : () => <Registration
                                getUser={getUser}/>}/>
