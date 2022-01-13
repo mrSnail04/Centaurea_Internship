@@ -1,10 +1,16 @@
 FROM python:3.7
 
 # Install curl, node, & yarn
-RUN apt-get install -y curl \
+RUN apr-get update
+RUN apt-get -y install \
+    curl \
+    npm \
+    node \
+
+#RUN apt-get install -y curl \
 #    && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y nodejs \
-    && curl -o- -L https://yarnpkg.com/install.sh | bash
+#    && apt-get install -y nodejs \
+#    && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 WORKDIR /app/backend
 
