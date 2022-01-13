@@ -1,7 +1,7 @@
 FROM python:3.7
 
 # Install curl, node, & yarn
-RUN apr-get update
+RUN apt-get update
 RUN apt-get -y install \
     curl \
     npm \
