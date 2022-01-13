@@ -55,7 +55,8 @@ const registration = async (username, password, firstname, lastname, email) => {
         password: password,
         first_name: firstname,
         last_name: lastname,
-        email: email
+        email: email,
+        console.log(username)
     }).then(
         //resolved
         async (response) => {
