@@ -12,12 +12,14 @@ class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     slug = models.SlugField(unique=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
+    qty_ticket = models.PositiveIntegerField(verbose_name='Количество билетов')
 
     def __str__(self):
         return f'{self.id}'
 
     def save(self, *args, **kwargs):
         self.price = self.event.price
+        self.qty_ticket = self.event.qty_ticket
         super().save(*args, **kwargs)
 
     class Meta:
