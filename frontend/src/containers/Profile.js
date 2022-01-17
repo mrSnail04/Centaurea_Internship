@@ -101,10 +101,10 @@ const Product = ({product, count, updateCount, getCart}) => {
     const getCountLimit = async () => {
         if (product.product.qty_ticket > 10) {
             await setCountlimit(product.product.qty_ticket);
-            сonsole.log(countlimit)
+            {сonsole.log(countlimit)}
         } else {
             await setCountlimit(10);
-            сonsole.log(countlimit)
+            {сonsole.log(countlimit)}
         }
     }
 
