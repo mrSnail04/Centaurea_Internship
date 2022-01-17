@@ -98,7 +98,6 @@ const Cart = (props) => {
 const Product = ({product, count, updateCount, getCart}) => {
 
     const [countlimit, setCountlimit] = useState(1);
-    console.log(countlimit);
     const getCountLimit = async () => {
         if (product.product.qty_ticket < 10) {
             setCountlimit(product.product.qty_ticket);
@@ -112,6 +111,7 @@ const Product = ({product, count, updateCount, getCart}) => {
     }, []);
 
     const increase = async () => {
+        console.log(countlimit);
         let result = await API.changeQty(count+1, product);
         updateCount(count + 1, product.id);
         if (result.status === 200) {
@@ -138,7 +138,6 @@ const Product = ({product, count, updateCount, getCart}) => {
     //scope="row"
 
     return
-    <>
         <tr key={product.id}>
             <td>{product.product.title}</td>
             <td>{round(product.product.price * product.qty)}</td>
@@ -153,6 +152,4 @@ const Product = ({product, count, updateCount, getCart}) => {
                 </span>
             </td>
         </tr>
-        <p>{countlimit}</p>
-    </>
 }
