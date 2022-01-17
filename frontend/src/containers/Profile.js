@@ -99,6 +99,8 @@ const Product = ({product, count, updateCount, getCart}) => {
 
     const [countlimit, setCountlimit] = useState(1);
     const getCountLimit = async () => {
+        console.log(product)
+        console.log(product.product.qty_ticket)
         if (product.product.qty_ticket > 10) {
             console.log(product.product.qty_ticket)
             await setCountlimit(product.product.qty_ticket);
@@ -111,7 +113,6 @@ const Product = ({product, count, updateCount, getCart}) => {
 
     useEffect(() => {
         getCountLimit();
-        console.log(countlimit)
     }, []);
 
     const increase = async () => {
