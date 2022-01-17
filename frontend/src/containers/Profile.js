@@ -98,14 +98,12 @@ const Cart = (props) => {
 const Product = ({product, count, updateCount, getCart}) => {
 
     const [countlimit, setCountlimit] = useState(1);
+    console.log(countlimit);
     const getCountLimit = async () => {
         if (product.product.qty_ticket < 10) {
-            console.log(product.product.qty_ticket)
             setCountlimit(product.product.qty_ticket);
-            // console.log(countlimit);
         } else {
             setCountlimit(10);
-            // console.log(countlimit);
         }
     }
 
@@ -117,14 +115,14 @@ const Product = ({product, count, updateCount, getCart}) => {
         let result = await API.changeQty(count+1, product);
         updateCount(count + 1, product.id);
         if (result.status === 200) {
-            getCart()
+            getCart();
         }
     }
     const decrease = async () => {
         let result = await API.changeQty(count-1, product);
         updateCount(count - 1, product.id);
         if (result.status === 200) {
-            getCart()
+            getCart();
         }
     }
 
@@ -133,24 +131,28 @@ const Product = ({product, count, updateCount, getCart}) => {
         if  (result.status === 204) {
             getCart();
         } else {
-            console.log('Ошибка')
+            console.log('Ошибка');
         }
     }
 
     //scope="row"
 
-    return <tr key={product.id}>
-        <td>{product.product.title}</td>
-        <td>{round(product.product.price * product.qty)}</td>
-        <td>
-            <span style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
-                <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
-                <button type="button" className="btn btn-outline-info" disabled={count >= countlimit} onClick={increase}>+</button>
-                <button style={{marginLeft: '3px', marginRight: '12px'}}
-                        type="button" className="btn btn-outline-danger"
-                        onClick={del}>Удалить</button>
-            </span>
-        </td>
-    </tr>
+    return
+    <>
+        <tr key={product.id}>
+            <td>{product.product.title}</td>
+            <td>{round(product.product.price * product.qty)}</td>
+            <td>
+                <span style={{display: 'flex', justifyContent: 'flex-end'}}>
+                    <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
+                    <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
+                    <button type="button" className="btn btn-outline-info" disabled={count >= countlimit} onClick={increase}>+</button>
+                    <button style={{marginLeft: '3px', marginRight: '12px'}}
+                            type="button" className="btn btn-outline-danger"
+                            onClick={del}>Удалить</button>
+                </span>
+            </td>
+        </tr>
+        <p>{countlimit}</p>
+    </>
 }
