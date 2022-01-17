@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {API} from "../api/api";
 
 
-
 export const Profile = (props) => {
     useEffect(() => {
         function fetchData() {
@@ -100,6 +99,22 @@ const Cart = (props) => {
 
 const Product = ({product, count, updateCount, getCart}) => {
 
+    const [countlimit, setCountlimit] = useState(1);
+    const getCountLimit = async () => {
+        if (product.product.qty_ticket > 10) {
+            setCountlimit(product.product.qty_ticket);
+        } else {
+            setCountlimit(10);
+        }
+    }
+
+    useEffect(() => {
+        getCountLimit();
+        console.log(countlimit)
+    }, []);
+
+
+
     const increase = async () => {
         let result = await API.changeQty(count+1, product);
         updateCount(count + 1, product.id);
@@ -133,7 +148,7 @@ const Product = ({product, count, updateCount, getCart}) => {
             <span style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <button type="button" className="btn btn-outline-info" disabled={count < 2} onClick={decrease}>-</button>
                 <span style={{margin: '3px'}} className="btn btn-outline-secondary">{count}</span>
-                <button type="button" className="btn btn-outline-info" disabled={count > 10} onClick={increase}>+</button>
+                <button type="button" className="btn btn-outline-info" disabled={count >= countlimit} onClick={increase}>+</button>
                 <button style={{marginLeft: '3px', marginRight: '12px'}}
                         type="button" className="btn btn-outline-danger"
                         onClick={del}>Удалить</button>

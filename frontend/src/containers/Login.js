@@ -22,8 +22,6 @@ export const Login = (props) => {
 
     const submit = async () => {
         let result = await API.login(login, password);
-        console.log(login, password);
-        concole.log(result);
         if (result.data && result.data['auth_token']) {
             await props.getUser();
             await props.getEvent();
