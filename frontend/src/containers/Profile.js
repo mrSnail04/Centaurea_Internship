@@ -5,9 +5,7 @@ import {API} from "../api/api";
 
 export const Profile = (props) => {
     useEffect(() => {
-        function fetchData() {
-            props.getCart();
-        }
+        props.getCart();
     }, []);
 
     return (
@@ -102,9 +100,11 @@ const Product = ({product, count, updateCount, getCart}) => {
     const [countlimit, setCountlimit] = useState(1);
     const getCountLimit = async () => {
         if (product.product.qty_ticket > 10) {
-            setCountlimit(product.product.qty_ticket);
+            await setCountlimit(product.product.qty_ticket);
+            сonsole.log(countlimit)
         } else {
-            setCountlimit(10);
+            await setCountlimit(10);
+            сonsole.log(countlimit)
         }
     }
 
@@ -112,8 +112,6 @@ const Product = ({product, count, updateCount, getCart}) => {
         getCountLimit();
         console.log(countlimit)
     }, []);
-
-
 
     const increase = async () => {
         let result = await API.changeQty(count+1, product);

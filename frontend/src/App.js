@@ -68,9 +68,7 @@ export const App = () => {
         if (localStorage.getItem("auth_token")) {
             fetchData();
         } else {
-            console.log(setUser);
             setUser(null);
-            console.log(setUser);
         }
     }, []);
 
