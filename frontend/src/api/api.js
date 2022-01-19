@@ -116,7 +116,7 @@ const cartUser = async () => {
 
 const productAddToCart = async (event_id) => {
     return i.patch(`/api/cart/current_customer_cart/add_to_cart/${event_id}/`).then((response) => {
-        console.log(response);
+        console.log(response.data.detail);
     }).catch((error) => {
         console.log(error);
         return <h1>error</h1>;
