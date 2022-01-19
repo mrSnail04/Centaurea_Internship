@@ -137,8 +137,7 @@ const Product = ({product, count, updateCount, getCart}) => {
 
     //scope="row"
 
-    return
-        <tr key={product.id}>
+    return <tr key={product.id}>
             <td>{product.product.title}</td>
             <td>{round(product.product.price * product.qty)}</td>
             <td>
