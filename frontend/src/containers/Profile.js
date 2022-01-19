@@ -4,7 +4,6 @@ import {API} from "../api/api";
 
 
 export const Profile = (props) => {
-    // props.getCart();
 
     return (
         <div className="container">
@@ -109,7 +108,6 @@ const Product = ({product, count, updateCount, getCart}) => {
     }, []);
 
     const increase = async () => {
-        console.log(countlimit);
         let result = await API.changeQty(count+1, product);
         updateCount(count + 1, product.id);
         if (result.status === 200) {
