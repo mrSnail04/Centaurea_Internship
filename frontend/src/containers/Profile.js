@@ -4,9 +4,7 @@ import {API} from "../api/api";
 
 
 export const Profile = (props) => {
-    useEffect(() => {
-        props.getCart();
-    }, []);
+    props.getCart();
 
     return (
         <div className="container">
