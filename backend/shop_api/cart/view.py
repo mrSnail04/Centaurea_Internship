@@ -72,7 +72,8 @@ class CartViewSet(viewsets.ModelViewSet):
             cart.products.add(cart_product)
             cart.save()
             return response.Response({"detail": 'Товар добавлен в корзину'})
-        return response.Response({"detail": 'Товар уже в корзине'}, status=status.HTTP_400_BAD_REQUEST)
+        return response.Response({"detail": 'Товар уже в корзине'})
+                                 # status=status.HTTP_200 HTTP_400_BAD_REQUEST)
 
     @action(methods=['PATCH'], detail=False,
             url_path='current_customer_cart/change_qty/(?P<qty>\d+)/(?P<cart_product_id>\d+)')
