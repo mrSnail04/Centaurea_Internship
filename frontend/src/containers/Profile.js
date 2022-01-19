@@ -4,7 +4,7 @@ import {API} from "../api/api";
 
 
 export const Profile = (props) => {
-    props.getCart();
+    // props.getCart();
 
     return (
         <div className="container">
