@@ -50,6 +50,7 @@ export const EventPage = (props) => {
             console.log('Ошибка')
         }
     }
+
     const getTrueEvent = async (result) => {
         switch (result.type_event) {
             case "Party":
@@ -75,6 +76,7 @@ export const EventPage = (props) => {
         let event = await getEvent(slug);
         let result = await API.productAddToCart(event.id);
         await props.getCart();
+        console.lof(result);
     }
 
     useEffect(() => {
