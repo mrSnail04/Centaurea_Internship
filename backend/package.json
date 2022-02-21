@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "cloudinary-react": "^1.7.0"
+    "cloudinary-react": "^1.7.0",
+    "react-alert": "^7.0.3"
   }
 }

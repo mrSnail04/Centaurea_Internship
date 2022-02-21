@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from "react";
 import {Link, useParams} from 'react-router-dom';
 import {API} from "../api/api";
+import {Alert} from 'react-alert';
 
 
 export const EventPage = (props) => {
@@ -77,6 +78,7 @@ export const EventPage = (props) => {
         let result = await API.productAddToCart(event.id);
         await props.getCart();
         console.log(result);
+        alert(result);
     }
 
     useEffect(() => {
