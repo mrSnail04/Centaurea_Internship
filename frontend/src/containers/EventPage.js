@@ -76,7 +76,7 @@ export const EventPage = (props) => {
         let event = await getEvent(slug);
         let result = await API.productAddToCart(event.id);
         await props.getCart();
-        console.lof(result);
+        console.log(result);
     }
 
     useEffect(() => {
