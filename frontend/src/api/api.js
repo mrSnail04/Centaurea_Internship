@@ -39,6 +39,7 @@ const login = async (login, password) => {
     return i.post('/auth/token/login', {username: login, password: password})
         .then((response) => {
             if (response?.data?.auth_token) {
+                console.log(username)
                 localStorage.setItem('auth_token', response.data['auth_token']);
                 return response;
             } else {
@@ -68,16 +69,17 @@ const registration = async (username, password, firstname, lastname, email) => {
         },
         //rejected
         (error) => {
-            return <h1>error</h1>;
+            return <h1>{error}</h1>;
         })
 }
 
 const logout = async () => {
     return i.get('/api/logout').then((response) => {
         localStorage.removeItem('auth_token')
+        console.log(response)
         return notAuthorized();
     }).catch((error) => {
-        return <h1>error</h1>;
+        return <h1>{error}</h1>;
     })
 }
 
@@ -101,7 +103,7 @@ const me = async () => {
             let user = response.data; // {"first_name":"...","last_name":"...","email":"...","id":...,"username":"..."}
             return user;
     }).catch((error) => {
-        return <h1>error</h1>;
+        return <h1>{error}</h1>;
     })
 }
 
@@ -110,7 +112,7 @@ const cartUser = async () => {
         let cart = response.data
         return cart;
     }).catch((error) => {
-        return <h1>error</h1>;
+        return <h1>{error}</h1>;
     })
 }
 
@@ -130,7 +132,7 @@ const changeQty = async (count, product) => {
             return (response);
         }
     }).catch((error) => {
-        return <h1>error</h1>;
+        return <h1>{error}</h1>;
     })
 }
 
@@ -139,7 +141,7 @@ const deleteProduct = async (product) => {
     ).then((response) => {
         return response;
     }).catch((error) => {
-        return <h1>error</h1>;
+        return <h1>{error}</h1>;
     })
 }
 
